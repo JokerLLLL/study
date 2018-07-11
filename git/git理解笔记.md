@@ -67,6 +67,10 @@ git stash pop
 恢复+丢弃
 
 #远程仓库 + 多人合作
+
+git init --bare
+创建远程的中心仓库
+
 git remote
 得到远程默认仓库名，一般都为origin
 
