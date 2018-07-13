@@ -1,3 +1,4 @@
+```php
 <?php
 
 \yii\grid\GridView::widget([
@@ -42,7 +43,7 @@
           'format' => 'raw',
       ],
       [
-          'attribute' =>'url' //进过  特殊处理的视图
+          'attribute' =>'url', //进过  特殊处理的视图
           'label' => '富文本',
           'filter' => Html::activeTextInput($searchModel, 'url', ['class' => 'form-control']),
           'format' => 'raw',
