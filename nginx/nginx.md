@@ -58,7 +58,7 @@ http请求变量： $arg_参数名  $http_发送头名  $send_http_响应头名 
 http_stub_status_module  查看nginx状态  server 或 location
 server{
   location /mystatus {
-    stub_status;
+    stub_status on;
   }
 }
 
@@ -85,6 +85,7 @@ limit_req zone=name [burst=3] [nodelay]; 使用 http,server,location
 
 http{
   limit_conn_zone $binary_remote_addr zone=conn_zone:1m;
+  //binnary_remote_addr代替remote_addr 更小 对于同一个addr 每秒只请求一次的配置
   limit_req_zone $binary_remote_addr zone=req_zone:1m rate = 1r/s;
   server {
     location / {
@@ -127,11 +128,11 @@ server {
 }
 
 
-#场景实践篇#
+###场景实践篇###
 
 #静态资源web服务
 .html .css .js  .jpeg .gif .png .flv .mpeg .txt .rar
-CDN:
+静态资源CDN加速项:
 sendfile on|off  文件读取  http,server,location,if in location
 tcp_nopush on|off 包裹延迟一次性发送 http,server,location
 tcp_nodelay on|off 包裹立即发送(长连接) http,server,location
@@ -146,9 +147,11 @@ server {
   }
 }
 ##浏览器缓存原理
-   校验过期 Expire Cache-Controller(max-age) 过期时间
-   Etag头验证(字符串)
+   校验过期 Expire Cache-Controller(max-age) 过期时间协议 http1.0 和http1.1的过期
+   
+   Etag头验证(字符串)  
    Last-Modify头验证(时间)
+   通过校验 过期服务端返回302 not modify表示为更新
 
    expire time 过期头配置
   location / {
@@ -175,7 +178,12 @@ server {
 
     valid_referers none|blocked|server_names|string...;//允许的规则
     blocked:表示代理
-
+    
+    curl http://nignx1.com/iamge/1.jpg
+    200 ok
+    curl -e "http://www.baidu.com" -I http://nginx1.com/image/1.jpg
+    403 error
+    
    第三方模块：
    HttpAccessKeyModule 实现防盗链
    accesskey on|off;
