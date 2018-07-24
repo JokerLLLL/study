@@ -168,7 +168,7 @@ server {
     http_refer 模块(nginx变量)  server,location
     location / {
       valid_referers none blocked  [www.baidu.com 127.0.01 ...]
-      if ($invalid_referer) {
+      if ( ) {
         return 403;
       }
     }

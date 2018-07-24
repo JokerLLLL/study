@@ -1,5 +1,5 @@
 #版本回退
-git reset --hard 版本号或Head^
+git reset --hard 版本号或Head^ 80f9292 
 退回某个版本或上几个版本
 
 git reflog

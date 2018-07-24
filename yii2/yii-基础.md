@@ -5,6 +5,7 @@ yii的核心验证器位于yii\validators命名空间中，我们可以使用别
 yii\validators\Validator::$builtInValidators 属性里申明了所以支持的属性。
 
 ```php
+<?php
 return [
   //检查 "selected" 是否为 0 或 1，无视数据类型
   ['selected','boolean'],
@@ -22,15 +23,15 @@ return [
   //type 默认为string 如果为数字 可以启用number
   ['password','compare'],
   ['re_password','compare','compareAttribute'=>'password','message'=>'两次输入不一样'],
-  ['age','compare','compareValue'=>30,'operator'=>'>=']
+  ['age','compare','compareValue'=>30,'operator'=>'>='],
 
   //日期验证 有三种不同格式 date datetime time
   //format 被验证值的日期时间格式 默认值于三种格式各不相同 参考Yii::$app->formatter->dateFormat
   //timestampAttribute 将提交的日期转成时间戳填充到指定字段
-  ['creaet_time','date','timestampAttribute'=>'create_time']
+  ['creaet_time','date','timestampAttribute'=>'create_time'],
 
   //default 默认值 value属性可以为定值 也可以使用匿名函数
-  ['age','defualt','value'=>0]
+  ['age','defualt','value'=>0],
   [['from_time','to_time'],'defualt','value'=>function($model,$attribute){
      if($attribute == 'from_time'){
        return strtotime('-1 day');
@@ -53,7 +54,7 @@ return [
   //exist 用于AR里中的是否值是否存在的验证,输入a1的值在数据表中存在通过验证
   ['a1','exist'],
   ['a1', 'exist', 'targetAttribute'=>'a2'],  //验证a1的值是否存在a2中 存在返回true
-  [['a1','a2'],'exist','targetAttribute'=>['a1','a2']] //a1 a2的值有需要存在 且都相互报错
+  [['a1','a2'],'exist','targetAttribute'=>['a1','a2']], //a1 a2的值有需要存在 且都相互报错
 
   //file 文件验证 大小尺寸单位byte
   //FileValidator 通常与 yii\web\UploadedFile 共同使用
@@ -119,6 +120,7 @@ return [
 ### yii components组件 GridView,DetailView(类同Grid) 和 ActiveForm
 
 ```php
+<?php
 Pjax::begin(); //使生成的列表分页可以进行ajax异步加载
 echo GridView::widget([
     'dataProvider' => $dataProvider, //数据提供
@@ -133,7 +135,7 @@ echo GridView::widget([
         //展现字段
         [
             'attribute'=>'name', //字段 可以是model表的关联字段 子查询 u.name
-            'label'=>'名字' //表头标题
+            'label'=>'名字', //表头标题
             'contentOptions'=>[ //字段样式
               'style'=>'word-break: break-all;white-space: normal;', //设置自动跳转段落位置
               'width'=>'12%',
@@ -143,7 +145,7 @@ echo GridView::widget([
               'image',
               [ 'width'=>'50','height'=>'50'],
             ],
-            'filter'=>['1'=>'是','0'=>'否'] //在有 filterModel的时候有用
+            'filter'=>['1'=>'是','0'=>'否'], //在有 filterModel的时候有用
             'value'=>'u.name',//定义value的值 同attribute
             'value'=>function($model){
                return 'doing something...';
@@ -162,7 +164,7 @@ echo GridView::widget([
                  'title'=>'edit',
                  'class'=>'del btn btn-default btn-xs',
                  'data'=>[
-                   'confirm'=>Yii::t('app','yes or no?')
+                   'confirm'=>Yii::t('app','yes or no?'),
                    'method'=>'post',
                  ],
               ]);
@@ -171,7 +173,7 @@ echo GridView::widget([
               return Html::a('<i class="fa fa-edit">button2</i>','javascript:;',[
                 'class'=>'button2',
                 'data-value'=>$model->id,
-              ])
+              ]);
             }
           ]
         ]
@@ -202,6 +204,9 @@ $form = ActiveForm::begin([
 echo $form->field($model,'name',['option'=>['class'=>'class','style'=>'display:none']]);//可以添加样式
 echo $form->field($model,'name')->textInput(['maxlength' => true])->label('姓名');
 echo $from->field($model,'content')->textarea(['rows'=>3]);//编辑框
+echo $from->field($model,'content')->textarea(['rows'=>3,'readonly'=>true]);//编辑框 //readonly 只读
+echo $form->field($model,'select')->DropDownList(['option'=>'name']);
+
 echo $form->field($model,'select')->DropDownList(['1'=>'one','2'=>'two'],[
   'style'=>'','onchange'=>'$(".class").hide();if($(this).val==3){$.(".class").show();}'
 ]);
@@ -216,4 +221,25 @@ echo $form->field($model,'create_time')->widget(\kartik\datetime\DataTimePicker:
 echo Html::submitButton('button',['class'=>'btn btn-primary']);
 ActiveForm::end();
 
+    //图像上传
+    echo $form->field($model, 'logo_url')->widget('yidashi\webuploader\Webuploader',['server'=>'/base/pic-api/upload?pic_type=local',
+        'options'=>['btnname'=>'上传头像','boxId' => 'picker1', 'previewWidth'=>250, 'previewHeight'=>250]]);
+        
+    //富文本编辑框
+   echo  $form->field($model, 'content')->widget('kucha\ueditor\UEditor',['clientOptions' => [
+                //编辑区域大小
+                'initialFrameWidth' => "100%",
+                'toolbars' => [[
+                    'fullscreen', 'source', '|', 'undo', 'redo', '|',
+                    'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+                    'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+                    'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+                    'directionalityltr', 'directionalityrtl', 'indent', '|',
+                    'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
+                    'link', 'unlink', 'anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+                    'simpleupload', 'insertimage', 'emotion', 'scrawl', 'insertvideo', 'music', 'attachment', 'map', 'insertframe', 'pagebreak', 'background', '|',
+                    'horizontal', 'date', 'time', 'spechars', 'snapscreen', 'wordimage', '|',
+                    'help'
+                ]],
+            ]]); ?>
 ```
