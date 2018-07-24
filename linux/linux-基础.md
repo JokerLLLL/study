@@ -32,7 +32,14 @@ awk编辑器
 #快速编辑去除 空白和#注释的配置文件
 cat xx.conf|grep -v "^$"|grep -v "#">>xx3.conf
 
+ls -lh 查看文件大小
 
+#查看端口
+netstat -anp|grep 9000
 
+#ab压力测试
+ab -n 1000 -c 20 htts://www.baidu.coom/
 
+#curl 查看请求头
+curl -v www.baidu.com >> /dev/null
 
