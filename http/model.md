@@ -38,4 +38,36 @@
         请求头的限制：
         都需要OPTION 进行预先请求
         
-        
+###缓存
+    Cache-Control :
+    可缓存性：
+      public     
+      private  
+      no-cache  //需要服务器验证才能使用缓存 服务器判断以下内容
+          If-Modified-Since:123
+          If-None-Match:777
+      
+    max-age = 200 //前端缓存200s  
+    s-maxage = 200 
+    max-stale = 200
+    
+    must-revalidate
+    proxy-revalidate
+    
+    no-store //本地和代理都不能使用缓存
+    no-transform  //不被压缩
+    
+    资源验证：
+    Last-Modified:  //对比上次修改时间是否过期
+    Etag:          //签名验证 是否过期
+    
+    
+    Set-Cookie设置 键值对的形式设置
+      max-age expire 设置过期时间
+      Secure https 发送
+      HttpOnly 无法通过 document.cookie 访问
+      domain=test.com 设置一级域名在二级域名下cookie公用
+      
+      
+####TCP长连接复用
+   浏览器有6个tcp连接的限制
