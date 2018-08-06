@@ -66,8 +66,75 @@
       max-age expire 设置过期时间
       Secure https 发送
       HttpOnly 无法通过 document.cookie 访问
-      domain=test.com 设置一级域名在二级域名下cookie公用
+      domain=test.com 设置一级域名在二级域名下cookie公用  //无法跨域设置
+      
+      eg：
+      Set-Cookie:['id=1;max-age=200','name=jokerl;HttpOnly','all=xxx;domain=test.com']
+      
       
       
 ####TCP长连接复用
    浏览器有6个tcp连接的限制
+   
+   
+   
+###数据协商
+    --请求头:
+      Accept:
+      Accept-Encoding:
+      Accept_language:
+      User-Agent:
+      
+    --响应头
+      Content-Tpye:
+      Content-Encoding:
+      Content-Language:
+      
+      eg：
+      Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+      Accept-Encoding:gzip, deflate, br
+      Accept-Language:zh-CN,zh;q=0.9
+      Cache-Control:no-cache
+      Connection:keep-alive
+      Cookie:id=123; name=abc
+      Host:127.0.0.1:8888
+      Pragma:no-cache
+      Upgrade-Insecure-Requests:1
+      User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.3
+      
+      
+      
+      --表单提交
+        Content-Type:application/x-www-form-urlencoded
+        内容放在
+        Form Data
+        
+      Content-Type:multipart/form-data
+      eg：
+      Content-Type:multipart/form-data; boundary=----WebKitFormBoundarytA3BheRC64ba2lqT
+      Request Payload
+      ------WebKitFormBoundaryRorFTOoXQosssxMF
+      Content-Disposition: form-data; name="id"
+      
+      ------WebKitFormBoundaryRorFTOoXQosssxMF //字串
+      Content-Disposition: form-data; name="password"
+      
+      ------WebKitFormBoundaryRorFTOoXQosssxMF  //文件
+      Content-Disposition: form-data; name="file"; filename="croped-image.jpg"
+      Content-Type: image/jpeg
+      
+      ------WebKitFormBoundaryRorFTOoXQosssxMF--
+      
+      
+      
+###资源重定向 / => /new 
+    302 重定向(每次访问 / 都先请求服务器)
+    Location:/new
+    
+    301 永久重定向(第二次请求 / 时，浏览器就直接重定向了)
+    Location:/new
+    
+
+### Content-Security-Policy
+
+    
