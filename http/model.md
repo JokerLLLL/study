@@ -136,5 +136,48 @@
     
 
 ### Content-Security-Policy
-
+       
+       // src 只能http 或 https加载
+       Content-Security-Policy:'default-src http: https'
+       //只加自己的域
+       Content-Security-Policy:'script-src \'self\''
+       //表单限制
+       Content-Security-Policy:'form-ation \'self\''
+       
+       //测试用 只Report 不限制
+       Content-Security-Policy-Report-Only: 
+       
+       
+       
+###代理缓存 
+       
+   nginx 做代理配置:
+   http{
+      proxy_cache_path /opt/cache levels=1:2 keys_zone=imooc_cache:10m max_size=10g inactive=60m use_temp_path=off;
+      server{
+        location / {
+          proxy_cache imooc_cache;
+          proxy_cache_valid 200 304 12h;
+          proxy_cache_key $host$uri$is_args$args;
+          add_header Nginx-Cache "xxx";
+          proxy_pass 127.0.0.1:8888;
+          proxy_set_heard Host $host;
+  
+          proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http 504;
+          include proxy_params;
+        }
+      }
+    }
     
+    Respose Header:
+    Cache-Control:max-age=20;         //代理也会进行20s缓存
+    Cache-Control:s-maxage=200;       //只进行代理的缓存
+    Cache-Control:max-age=20;s-maxage=200;private; //只进行浏览器缓存 no-store都不缓存
+    
+    Vary:X-Test-Cache;             //代表请求头里  X-Test-Cahe：内容  只有内容都相同才使用缓存
+    Vary头可以自行定义
+    
+    
+       
+ 
+       
