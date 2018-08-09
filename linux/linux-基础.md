@@ -43,3 +43,6 @@ ab -n 1000 -c 20 htts://www.baidu.coom/
 #curl 查看请求头
 curl -v www.baidu.com >> /dev/null
 
+#openssl 证书生成
+openssl req -x509 -newkey rsa:2048 -nodes -sha256 -keyout server-private.pem -out server-cert.pem
+
