@@ -1,5 +1,6 @@
 #C编写的一个通信扩展
   2.php的cli模式(Command Line Interface)
+   php --ini //定位php.ini的位置
    php -v
    php -i
    php -l 1.php  (检测1.php脚本语法错误)

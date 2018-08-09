@@ -25,4 +25,31 @@
                  allow from all 
          </Directory>
 </VirtualHost>
+
+#apache 的 ssl https配置
+
+<IfModule mod_ssl.c>
+        <VirtualHost _default_:443>
+                ServerAdmin 492124454@qq.com
+                ServerName  watermeter-admin.netmi.com.cn
+                DocumentRoot /var/www/html/watermeter/frontend/web
+                SetEnv APPLICATION_ENV "development"
+                <Directory "/var/www/html/watermeter/frontend/web">
+                                DirectoryIndex index.php index.html
+                                AllowOverride All
+                                Order allow,deny
+                                Allow from all
+                </Directory>
+                ErrorLog ${APACHE_LOG_DIR}/error.log
+                CustomLog ${APACHE_LOG_DIR}/access.log combined
+                SSLEngine on
+                SSLProtocol all -SSLv2 -SSLv3
+                SSLCipherSuite HIGH:!RC4:!MD5:!aNULL:!eNULL:!NULL:!DH:!EDH:!EXP:+MEDIUM
+                SSLHonorCipherOrder on
+                SSLCertificateFile      /etc/apache2/sites-available/water-ssl/214786092010964.pem
+                SSLCertificateKeyFile   /etc/apache2/sites-available/water-ssl/214786092010964.key
+                SSLCertificateChainFile /etc/apache2/sites-available/water-ssl/chain.pem
+        </VirtualHost>
+</IfModule>
+
                 

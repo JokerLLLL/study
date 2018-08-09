@@ -49,6 +49,8 @@ git merge develop
 git merge develop --no-ff -m 'meger master by jokerl'
 --no-ff参数表示不使用fast forward提交，而进行了一次commit
 
+git fetch --all && git reset --hard orgin/develop
+
 
 #隐藏工作区
 git stash

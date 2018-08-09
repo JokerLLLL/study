@@ -1,5 +1,6 @@
 ﻿tail -f /tmp/date.txt  #实时更新
 tail -3 /tmp/date.txt  #最后三行
+tail -n 10 xxx          最后10行
 date +%w               #返回星期几
 test 1 = 0             #测试语句
 echo $?                #返回最后一个语句生成的值
@@ -47,6 +48,10 @@ netstat -luntp|grep 80   #查看监听端口
 tar -xzvf file.tar.gz              -C  /tmp/ #指定解压目录      -c打包 -x解包 -v显示过程 -f指定打包后名
 tar -xjvf file.tar.bz2
 
+#zip
+unzip xxx.zip 解压
+zip -r xxx.zip xxx  打包
+
 #rar
 rar -x file.rar 
 
@@ -65,6 +70,11 @@ rm  -rf   1.html               #强制删除
 #swoole编译安装
 phpize                                #关联到PHP拓展库
 ./configure   --enable-async-redis    #启用异步redis  需要安装hiredis  C客户端的支持
+
+pcre库的依赖
+    ubuntu/debian环境://apt-get install libpcre3 libpcre3-dev
+    centos/redhat环境://yum install pcre-devel
+    
 make                                  #编译
 sudo make install                     #编译安装
 
@@ -84,5 +94,11 @@ find / -name nginx*                   #匹配所有nginx的目录以及文件
     /xx       查找xx  按n查找下一处
 编辑模式：
   
+  
+ #软链接
+ ln -s /a  /b
+ 
+ #添加用户
+ 
 
 
