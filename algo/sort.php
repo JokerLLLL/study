@@ -168,4 +168,44 @@ class Sort{
     }
 
 
+    /** 快速排序
+     * @param $array
+     */
+    public function quickSort(&$array)
+    {
+        $this->quick($array,0,count($array)-1);
+    }
+
+    //递归分段
+    public function quick(&$array,$l,$r)
+    {
+        if($l >= $r) {
+            return;
+        }
+        $p = $this->partition($array,$l,$r);
+        $this->quick($array,$l,$p-1);
+        $this->quick($array,$p+1,$r);
+    }
+
+    //返回一个p索引  使[l p-1] 都小于p  [p+1,r] 都大于p
+    public function partition(&$array,$l,$r)
+    {
+        $v = $array[$l];
+        // 使 [l+1,....p] <$v; [p+1...i) >$v
+        $j = $l;
+        for($i = $l;$i <= $r; $i++) {
+            if($array[$i] < $v) {
+                $tmp = $array[$j+1];
+                $array[$j+1] = $array[$i];
+                $array[$i] = $tmp;
+                $j++;
+            }
+        }
+        $tmp2 = $array[$j];
+        $array[$j] = $array[$l];
+        $array[$l] = $tmp2;
+        return $j;
+    }
+
+
 }

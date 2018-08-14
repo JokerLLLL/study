@@ -16,17 +16,19 @@ function doExam($callBack,&$array) {
     $end_time = microtime(true);
     echo '--time:'.($end_time - $start_time)."\n";
 }
-$range = range(0,1000000,2);
+$range = range(0,100000,2);
 shuffle($range);
 $range1 = $range;
 $range2 = $range;
 $range3 = $range;
 $range4 = $range;
 $range5 = $range;
+$range6 = $range;
 
 //doExam([$sort,'simpleSort'],$range1);
 //doExam([$sort,'insertSort'],$range2);
 doExam([$sort,'shellSort'],$range3);
 doExam([$sort,'mergeSortL'],$range4);
 doExam([$sort,'mergeSortR'],$range5);
-//var_dump($range1,$range2,$range3,$range4,$range5);
+doExam([$sort,'quickSort'],$range6);
+//var_dump($range1,$range2,$range3,$range4,$range6);
