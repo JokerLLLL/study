@@ -190,22 +190,58 @@ class Sort{
     //返回一个p索引  使[l p-1] 都小于p  [p+1,r] 都大于p
     public function partition(&$array,$l,$r)
     {
+        //随机一个 元素当array的第$l 位置的元素 解决元素过多有序的问题
+        $index = rand($l,$r);
+        list($array[$index],$array[$l]) = array($array[$l],$array[$index]);
         $v = $array[$l];
         // 使 [l+1,....p] <$v; [p+1...i) >$v
         $j = $l;
         for($i = $l;$i <= $r; $i++) {
             if($array[$i] < $v) {
-                $tmp = $array[$j+1];
-                $array[$j+1] = $array[$i];
-                $array[$i] = $tmp;
+                list($array[$j+1],$array[$i]) = array($array[$i],$array[$j+1]);
                 $j++;
             }
         }
-        $tmp2 = $array[$j];
-        $array[$j] = $array[$l];
-        $array[$l] = $tmp2;
+        list($array[$l],$array[$j]) = array($array[$j],$array[$l]);
         return $j;
     }
 
+    /** 快速排序2
+     * @param $array
+     */
+    public function quickSort2(&$array)
+    {
+        $this->partition2($array,0,count($array)-1);
+    }
+
+    public function partition2(&$array,$l,$r)
+    {
+        if($l >= $r) {
+            return;
+        }
+        //打乱随机
+        $index = rand($l,$r);
+        list($array[$index],$array[$l]) = array($array[$l],$array[$index]);
+
+        //避免重复 把v相等的集中一起
+        $v = $array[$l]; //arr[l] = v;
+        $lt = $l;       //arr[l+1,lt] < v;
+        $gt = $r + 1;    //arr[gt,r] >v;
+        $i = $l + 1;      //arr[lt+1,i) == v;
+        while ($i < $gt) {
+            if($array[$i] < $v) {
+                $lt ++;
+                $i ++;
+            }elseif ($array[$i] == $v) {
+                $i ++;
+            }else{
+                list($array[$gt],$array[$i]) = array($array[$i],$array[$gt]);
+                $gt --;
+            }
+        }
+        list($array[$l],$array[$lt]) = array($array[$lt],$array[$l]);
+        $this->partition2($array,$l,$lt-1);
+        $this->partition2($array,$gt,$r);
+    }
 
 }

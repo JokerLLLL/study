@@ -16,7 +16,7 @@ function doExam($callBack,&$array) {
     $end_time = microtime(true);
     echo '--time:'.($end_time - $start_time)."\n";
 }
-$range = range(0,100000,2);
+$range = range(0,100,2);
 shuffle($range);
 $range1 = $range;
 $range2 = $range;
@@ -30,5 +30,5 @@ $range6 = $range;
 doExam([$sort,'shellSort'],$range3);
 doExam([$sort,'mergeSortL'],$range4);
 doExam([$sort,'mergeSortR'],$range5);
-doExam([$sort,'quickSort'],$range6);
-//var_dump($range1,$range2,$range3,$range4,$range6);
+doExam([$sort,'quickSort2'],$range6);
+var_dump($range1,$range2,$range3,$range4,$range6);
