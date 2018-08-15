@@ -48,7 +48,7 @@
           If-None-Match:777
       
     max-age = 200 //前端缓存200s  
-    s-maxage = 200 
+    s-maxage = 200 //代理缓存时间
     max-stale = 200
     
     must-revalidate

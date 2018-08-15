@@ -117,7 +117,7 @@ return [
 这些是一些基础的验证规则，
 比较实用的有 require unique number min max filter配合function  default value配合function
 
-### yii components组件 GridView,DetailView(类同Grid) 和 ActiveForm
+### yii components组件 GridView,DetailView(类同Grid) 和 ActiveForm (后台)
 
 ```php
 <?php
@@ -242,4 +242,57 @@ ActiveForm::end();
                     'help'
                 ]],
             ]]); ?>
+```
+
+
+### yii 的日志模块
+
+```sql
+drop table if exists `log`;
+
+create table `log`
+(
+   `id`          bigint(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   `level`       integer,
+   `category`    varchar(255),
+   `log_time`    double,
+   `prefix`      text,
+   `message`     text,
+   key `idx_log_level` (`level`),
+   key `idx_log_category` (`category`)
+) engine InnoDB;
+
+```
+
+配置:
+```php
+<?php
+//配置文件里的写法  'categories'也可以写出 yii\base\*  等一些类名 发送错误时纪录
+       [ 'log' => [
+            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'targets' => [
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['error', 'warning'],
+                ],
+                [       //错误日志
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['info'],
+                    'categories' => ['test'],
+                    'logFile' => '@backend/runtime/logs/band/test.log',
+                    'maxFileSize' => 1024 * 2,
+                    'maxLogFiles' => 20,
+                ],
+                [
+                    'class'=>'yii\log\DbTarget',
+                    'logVars' => [''], //可追加的 _SERVER _COOKIE 等 
+                    'levels'=>['info','error','warning'],
+                    'categories'=>['category'],
+                ]
+            ],
+        ];
+       
+              //触发记入日志
+               \Yii::info($msg,'category');
+
 ```
