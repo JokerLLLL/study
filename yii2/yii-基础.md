@@ -108,28 +108,33 @@ return [
   //a1在a2中,是否唯一
   ['a1','unique','targetAttribute'=>'a2'],
   //a1,a2组合是否唯一 且只有a1有提示
-  [a1,'unique','targetAttribute'=>['a1','a2']],
+  ['a1','unique','targetAttribute'=>['a1','a2']],
   //a1,a2组合是否唯一 且a1 a2都有错误提示
   [['a1','a2'],'unique','targetAttribute'=>['a1','a2']],
 
-]
+];
 ```
 这些是一些基础的验证规则，
 比较实用的有 require unique number min max filter配合function  default value配合function
 
 ### yii components组件 GridView,DetailView(类同Grid) 和 ActiveForm (后台)
-
 ```php
 <?php
 Pjax::begin(); //使生成的列表分页可以进行ajax异步加载
 echo GridView::widget([
     'dataProvider' => $dataProvider, //数据提供
     'filterModel' => $searchModel, //搜索字段
-    'formatter' => [
-      'class' => 'yii\i18n\Formatter',
-      'nullDisplay' => '', //没有数据默认是not set 可以更改成 空字符串
-    ],
+     'rowOptions' =>function($model) {  //条数渲染
+         if(in_array($model->status, [6,7]) ){
+             return ['style'=>'color:red;'];
+         }
+       },
+      'formatter' => [
+          'class' => 'yii\i18n\Formatter',
+          'nullDisplay' => '', //没有数据默认是not set 可以更改成 空字符串
+       ],
     'options' => ['style'=>'overflow: auto; word-wrap: break-word;'],//应用全部字段
+    //字段渲染
     'columns' => [
        ['class' => 'yii\grid\SerialColumn','header'=>'编号'],//自动编号
         //展现字段
@@ -151,6 +156,15 @@ echo GridView::widget([
                return 'doing something...';
             }
         ],
+        [
+              'attribute' =>'url', //进过  特殊处理的视图
+              'label' => '富文本',
+              'filter' => Html::activeTextInput($searchModel, 'url', ['class' => 'form-control']),
+              'format' => 'raw',
+              'value' => function ($data) {
+                  return Html::a("请求地址", $data->url);
+              },
+         ],
         #字段结束
         //按钮
         [
@@ -208,7 +222,8 @@ echo $from->field($model,'content')->textarea(['rows'=>3,'readonly'=>true]);//�
 echo $form->field($model,'select')->DropDownList(['option'=>'name']);
 
 echo $form->field($model,'select')->DropDownList(['1'=>'one','2'=>'two'],[
-  'style'=>'','onchange'=>'$(".class").hide();if($(this).val==3){$.(".class").show();}'
+  'style'=>'','onchange'=>'$(".class").hide();if($(this).val==3){$.(".class").show();}',
+  'disabled'=>true                    //只读框
 ]);
 echo $form->field($model,'aid')->hiddenInput(['value'=>$model->aid])->label(false);
 echo $form->field($model,'create_time')->widget(\kartik\datetime\DataTimePicker::class(),[
@@ -294,5 +309,38 @@ create table `log`
        
               //触发记入日志
                \Yii::info($msg,'category');
+
+```
+
+
+###文件上传
+```php
+<?php
+
+#视图
+ echo $form->field($model,'fileMark')->fileInput();
+ 
+#控制器
+$model->fileMark = UploadedFile::getInstance($model, 'fileMark');
+$model->load(Yii::$app->request->post(),'');
+$model->upload();
+ 
+#模型
+    //验证规则
+    [['fileMark'],'file','skipOnEmpty' => true,'extensions' => ['txt','xls','xlsx','pdf','doc','docx']];
+    //上传方法
+    public function upload()
+    {
+        if ($this->validate()) {
+            $root = \Yii::getAlias('@backend/web');  //给到读写权限
+            $name = '/uploads/'.date('YmdHis').rand(100000,999999). '.' . $this->fileMark->extension;
+            $this->fileMark->saveAs($root.$name);
+            return $name;
+//            return true;
+        } else {
+//            throw new \Exception('upload file');
+            return false;
+        }
+    }
 
 ```

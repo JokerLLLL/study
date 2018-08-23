@@ -35,7 +35,7 @@ $data = $rows ->readAll();#数据
  */
 
 $modle = new ModleForm;
-if($modle ->load(Yii::$app ->request->post() && $modle ->validate()) {
+if($modle ->load(Yii::$app ->request->post()) && $modle ->validate()) {
   Yii::$app->user->login($this->getUser(), 3600 * 24 * 30);
 }
 

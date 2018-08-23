@@ -26,3 +26,5 @@ $model->updateCounters(['view_count' => 1]);
    ])->execute(); 
 
 
+
+
