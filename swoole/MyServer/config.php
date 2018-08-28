@@ -4,7 +4,8 @@ define("CD_LISTEN_PORT",50001);			//CS服务监听端口
 define("WS_ClIENT_SOCKET_NAME",'wsClients');			//缓存名称
 define("CD_LOG_FILE_PATH", "/var/www/html/xmd_soc/Server/syslog.log");
 
-define("API_SERVER","http://watermeter-api.netmi.com.cn");	//命令私钥
+//define("API_SERVER","http://watermeter-api.netmi.com.cn");	//命令私钥
+define("API_SERVER","https://water.suplink.net");	//命令私钥
 /**
  * 业务变量
  */

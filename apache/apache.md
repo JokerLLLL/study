@@ -52,4 +52,8 @@
         </VirtualHost>
 </IfModule>
 
+
+sudo a2enmod ssl #开启ssl模块
+
+
                 

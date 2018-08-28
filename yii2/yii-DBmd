@@ -23,7 +23,20 @@ $model->updateCounters(['view_count' => 1]);
    ->batchInsert('table',['name','key1','key2',],[
        ['name'=>'joker','key1'=>'mykey1','key2'=>'mykey2'],
        ['name'=>'ban','key1'=>'mykey1','key2'=>'mykey2'],
-   ])->execute(); 
+   ])->execute();
+
+```
+
+### 乐观锁
+
+AR类中重新
+public function optimisticLock()
+{
+    return 'vesion';
+}
+
+
+
 
 
 

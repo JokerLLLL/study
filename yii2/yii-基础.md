@@ -260,7 +260,7 @@ ActiveForm::end();
 ```
 
 
-### yii 的日志模块
+### yii 的日志配置模块
 
 ```sql
 drop table if exists `log`;
