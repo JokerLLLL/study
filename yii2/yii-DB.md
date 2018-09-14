@@ -2,7 +2,7 @@
 
 ```php
 <?php
-
+//sql 层
 Topic::updateAllCounters(['view_count' => 1], ['id' => $id]);
 
 //Expression 表示表达式 如sum()
@@ -11,6 +11,7 @@ Topic::updateAll(
     ['id' => $id]
 );
 
+//模型层
 $model = Post::findOne($id);
 $model->updateCounters(['view_count' => 1]);
 ```
@@ -29,12 +30,27 @@ $model->updateCounters(['view_count' => 1]);
 ```
 
 ### 乐观锁
+```php
+<?php
 
-AR类中重新
+//AR类中重写
 public function optimisticLock()
 {
     return 'vesion';
 }
+```
+
+### 相同AR类中 关联别名
+```php
+<?php
+
+public function getOne()
+{
+    return $this->hasOne(AR::className(),['uid'=>'uid'])->from('table as u');
+}
+
+```
+
 
 
 

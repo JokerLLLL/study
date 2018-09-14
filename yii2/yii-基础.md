@@ -88,7 +88,7 @@ return [
   ['salary','number'],
 
   //required 必填字段
-  ['username',required],
+  ['username','required'],
 
   //safe 安全属性
   ['content','safe'],
@@ -133,10 +133,19 @@ echo GridView::widget([
           'class' => 'yii\i18n\Formatter',
           'nullDisplay' => '', //没有数据默认是not set 可以更改成 空字符串
        ],
-    'options' => ['style'=>'overflow: auto; word-wrap: break-word;'],//应用全部字段
+    'options' => ['style'=>'overflow: auto; word-wrap: break-word;','id'=>'grid'],//应用全部字段
     //字段渲染
     'columns' => [
        ['class' => 'yii\grid\SerialColumn','header'=>'编号'],//自动编号
+       //条数多选框 + ajax 进行批量删除
+       [
+           'class'=>'yii\grid\CheckboxColumn',
+           "name" => "id",
+           'checkboxOptions' => function ($model, $key, $index, $column) {
+               return ['value'=>$model->id,'class'=>'checkbox'];
+           }
+       ],
+       
         //展现字段
         [
             'attribute'=>'name', //字段 可以是model表的关联字段 子查询 u.name
@@ -197,6 +206,21 @@ echo GridView::widget([
 Pjax::end();
 $this->beginBlock('button2');
 //ajax 代码
+
+$("#grid").on('click',function(){
+    var value = $('#grid').yiiGridView('getSelectedRows');
+    $.ajax({
+        'url':'/abc/index',
+        'dataType':'json',
+        'data':{name:value},
+        'timeOut':2000,
+        'success':function(data,status) {
+            alert('abc');
+            loaction.reload();
+        }
+    })
+});
+
 $this->endBlock();
 $this->registerJs($this->blocks['button2'],\yii\web\View::POS_END);
 ##该ajax还可以写成 js文件 在 AppAsset.php中注册
@@ -323,7 +347,9 @@ create table `log`
 #控制器
 $model->fileMark = UploadedFile::getInstance($model, 'fileMark');
 $model->load(Yii::$app->request->post(),'');
-$model->upload();
++
+
+->upload();
  
 #模型
     //验证规则
