@@ -206,6 +206,8 @@ echo GridView::widget([
 Pjax::end();
 $this->beginBlock('button2');
 //ajax 代码
+?>
+<script>
 
 $("#grid").on('click',function(){
     var value = $('#grid').yiiGridView('getSelectedRows');
@@ -221,6 +223,9 @@ $("#grid").on('click',function(){
     })
 });
 
+</script>
+
+<?
 $this->endBlock();
 $this->registerJs($this->blocks['button2'],\yii\web\View::POS_END);
 ##该ajax还可以写成 js文件 在 AppAsset.php中注册
@@ -250,8 +255,8 @@ echo $form->field($model,'select')->DropDownList(['1'=>'one','2'=>'two'],[
   'disabled'=>true                    //只读框
 ]);
 echo $form->field($model,'aid')->hiddenInput(['value'=>$model->aid])->label(false);
-echo $form->field($model,'create_time')->widget(\kartik\datetime\DataTimePicker::class(),[
-  'option'=>['placeholder' => ''],
+echo $form->field($model,'create_time')->widget(\kartik\datetime\DateTimePicker::className(), [
+  'options' => ['placeholder' => ''],
   'pluginOptions'=> [
     'autoclose'=>true,
     'format'=>'yyyy-mm-dd',
@@ -347,9 +352,7 @@ create table `log`
 #控制器
 $model->fileMark = UploadedFile::getInstance($model, 'fileMark');
 $model->load(Yii::$app->request->post(),'');
-+
-
-->upload();
+$model->upload();
  
 #模型
     //验证规则
