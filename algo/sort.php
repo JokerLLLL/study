@@ -235,7 +235,7 @@ class Sort{
             }elseif ($array[$i] == $v) {
                 $i ++;
             }else{
-                list($array[$gt],$array[$i]) = array($array[$i],$array[$gt]);
+                list($array[$gt-1],$array[$i]) = array($array[$i],$array[$gt-1]);
                 $gt --;
             }
         }
