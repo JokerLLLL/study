@@ -9,3 +9,20 @@
 if('aa' == 0) {
   echo '在php中非数字字符，和数字比较都是intval()处理 再进行比较；包括在switch中；
 }
+
+
+# php时间函数修正
+
+var_dump(date("Y-m-d", strtotime("-1 month", strtotime("2017-03-31"))));
+//输出2017-03-03
+var_dump(date("Y-m-d", strtotime("+1 month", strtotime("2017-08-31"))));
+//输出2017-10-01
+
+//修正函数
+var_dump(date("Y-m-d", strtotime("last day of -1 month", strtotime("2017-03-31"))));
+//输出2017-02-28
+var_dump(date("Y-m-d", strtotime("first day of +1 month", strtotime("2017-08-31"))));
+////输出2017-09-01
+var_dump(date("Y-m-d", strtotime("first day of next month", strtotime("2017-01-31"))));
+////输出2017-02-01
+var_dump(date("Y-m-d", strtotime("last day of last month", strtotime("2017-03-31"))));

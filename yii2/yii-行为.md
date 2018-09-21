@@ -60,7 +60,7 @@ class HelpBehavior extends ActionFilter
     }
 }
 ```
-@说明 yii的绑定行为就如同关系继承一样 可以重新 可以父类调；
+@说明 yii的绑定行为就如同关系继承一样 可以重写 可以父类调；
 
 
 
@@ -91,4 +91,4 @@ class HelpBehavior extends ActionFilter
         throw new ForbiddenHttpException('无权限访问！');
 ```
 
-
+## 在yii配置中配置 ##

@@ -23,8 +23,6 @@ $rows = $command ->queryAll();        //直接去取出数据
 
 ```
 
-
-
 #### 自增字段
 
 ```php

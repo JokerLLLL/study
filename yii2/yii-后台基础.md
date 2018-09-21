@@ -208,7 +208,10 @@ $this->beginBlock('button2');
 //ajax 代码
 ?>
 <script>
+//后台异步请求
+jQuery('#category').yiiGridView({"filterUrl":"\/index.php?r=category%2Findex","filterSelector":"#category-filters input, #category-filters select"});
 
+//后台多选删除
 $("#grid").on('click',function(){
     var value = $('#grid').yiiGridView('getSelectedRows');
     $.ajax({
@@ -249,6 +252,7 @@ echo $form->field($model,'name')->textInput(['maxlength' => true])->label('姓�
 echo $from->field($model,'content')->textarea(['rows'=>3]);//编辑框
 echo $from->field($model,'content')->textarea(['rows'=>3,'readonly'=>true]);//编辑框 //readonly 只读
 echo $form->field($model,'select')->DropDownList(['option'=>'name']);
+echo $form->field($modle,'test')->checkBoxList(['value1'=>'name1','value2'=>'name2','value3'=>'name3']);
 
 echo $form->field($model,'select')->DropDownList(['1'=>'one','2'=>'two'],[
   'style'=>'','onchange'=>'$(".class").hide();if($(this).val==3){$.(".class").show();}',
@@ -287,60 +291,6 @@ ActiveForm::end();
                 ]],
             ]]); ?>
 ```
-
-
-### yii 的日志配置模块
-
-```sql
-drop table if exists `log`;
-
-create table `log`
-(
-   `id`          bigint(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-   `level`       integer,
-   `category`    varchar(255),
-   `log_time`    double,
-   `prefix`      text,
-   `message`     text,
-   key `idx_log_level` (`level`),
-   key `idx_log_category` (`category`)
-) engine InnoDB;
-
-```
-
-配置:
-```php
-<?php
-//配置文件里的写法  'categories'也可以写出 yii\base\*  等一些类名 发送错误时纪录
-       [ 'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
-            'targets' => [
-                [
-                    'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
-                ],
-                [       //错误日志
-                    'class' => 'yii\log\FileTarget',
-                    'levels' => ['info'],
-                    'categories' => ['test'],
-                    'logFile' => '@backend/runtime/logs/band/test.log',
-                    'maxFileSize' => 1024 * 2,
-                    'maxLogFiles' => 20,
-                ],
-                [
-                    'class'=>'yii\log\DbTarget',
-                    'logVars' => [''], //可追加的 _SERVER _COOKIE 等 
-                    'levels'=>['info','error','warning'],
-                    'categories'=>['category'],
-                ]
-            ],
-        ];
-       
-              //触发记入日志
-               \Yii::info($msg,'category');
-
-```
-
 
 ###文件上传
 ```php
