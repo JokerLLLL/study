@@ -20,7 +20,7 @@ class BlogController extends Controller{
                 'class'=>HelpBehavior::className(),
                 'property'=>'value1' //HelpBehavior存在的属性  不同于 Yii::createObject() 配置
             ],
-            'behavior12'=>[
+            'behavior2'=>[
                 'class'=>HelpBehavior::className(),
                 'property'=>'value2' //HelpBehavior存在的属性  不同于 Yii::createObject() 配置
             ],                
@@ -56,7 +56,6 @@ class HelpBehavior extends ActionFilter
     public function test()
     {
         var_dump('behavior:'.$this->property);
-       
     }
 }
 ```
@@ -84,7 +83,7 @@ class HelpBehavior extends ActionFilter
                     $routes[] = $name;
                 }
             }
-    4.  对吧路由
+    4.  判断路由
         if(in_array($requestRoute,$routes) {
             return true;
         }       

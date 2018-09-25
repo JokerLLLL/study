@@ -165,10 +165,4 @@ $cache->getOrSet($key,function ()use($data) {
 //使缓存失效
 TagDependecy::invalidate($cache,'mark');
 
-
-
-
-
-
-
 ```
