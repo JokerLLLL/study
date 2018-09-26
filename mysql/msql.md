@@ -32,3 +32,26 @@ SELECT * FROM `machine_room_log` where create_time<'2018-07-30';
 SELECT * FROM `machine_room_log` where create_time>'2018-07-30';
 大于包含2018-07-30 
 
+
+//mysql 的事务锁
+```sql
+    //设置事务不自动提交 开始事务 查询数据 并将该数据锁定 （锁定数据只能自读 不能修改删除）
+    SET AUTOCOMMIT=0; BEGIN WORK; SELECT quantity FROM products WHERE id=3 FOR UPDATE; 
+    
+    //判断
+    
+    //然后操作 进行事务提交
+    UPDATE products SET quantity = '1' WHERE id=3 ; COMMIT WORK;
+    
+```
+上面介绍过SELECT ... FOR UPDATE 的用法，不过锁定(Lock)的数据是判别就得要注意一下了。
+由于InnoDB 预设是Row-Level Lock，所以只有「明确」的指定主键，MySQL 才会执行Row lock (只锁住被选取的数据) ，
+否则MySQL 将会执行Table Lock (将整个数据表单给锁住)[严重影响效率]。
+
+//锁表情况 比如 select * where name = `joker` for update; 会导致整张表锁死
+
+FOR UPDATE 仅适用于InnoDB，且必须在事务区块(BEGIN/COMMIT)中才能生效。
+
+
+
+

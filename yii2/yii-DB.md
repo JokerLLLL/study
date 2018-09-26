@@ -67,6 +67,20 @@ public function getOne()
 ```
 
 
+## yii的事物锁 ##
+```php
+<?php
+$tr = Yii::$app->db->beginTrancation();
+Yii::$app->db->createCommand("Select * form user_data where uid={$uid}")->qureyOne();
+//查询表 user_data
+$model = UserData::findOne(['uid'=>$uid]);
+$model->save();
+
+$tr->commit();
+
+```
+
+
 
 
 
