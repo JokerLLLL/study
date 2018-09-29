@@ -323,3 +323,16 @@ $model->upload();
     }
 
 ```
+
+## 弹框 ##
+````php
+        Yii::$app->getSession()->setFlash('success', '错误');
+
+        <?= Alert::widget() ?>
+        <script>
+            window.setTimeout(function() {
+                $('.alert').alert('close');
+            }, 3000);
+        </script>
+
+````

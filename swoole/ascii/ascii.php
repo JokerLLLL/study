@@ -54,3 +54,11 @@ echo chr('01000001');         //二进制，注意，这里的二进制一定要
 
 //可见字符串 转ASCII 10进制
 echo ord("\x7e");   //126
+
+var_dump(bindec('1100')); //二进制转  10进制
+var_dump(hexdec('FF'));     //16进制转  10进制
+
+var_dump(0x80);
+var_dump(hexdec('ff'));
+
+

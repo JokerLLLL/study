@@ -89,6 +89,20 @@ Class DateHandle{
         return false;
     }
 
+
+    /**  验证两位值 string是 要UnsetFromHexString 解析过的
+     *   异或校验
+     *
+     */
+    public function crcor($string) {
+        $crc = 0x7E;
+        for ($x = 0; $x < strlen ($string); $x++) {
+            $crc = $crc ^ ord($string[$x]);
+        }
+        return dechex($crc);
+    }
+
+
 }
 
 
@@ -98,6 +112,7 @@ $handle = new DateHandle();
 var_dump($handle->UnsetFromHexString("7e7e"));  //接收到的数据
 
 //将 "\x7E\x7E" 转变 "7e7e"
+
 var_dump($handle->SetToHexString("\x7E\x7E"));
 
 
