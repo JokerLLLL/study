@@ -26,3 +26,10 @@ var_dump(date("Y-m-d", strtotime("first day of +1 month", strtotime("2017-08-31"
 var_dump(date("Y-m-d", strtotime("first day of next month", strtotime("2017-01-31"))));
 ////输出2017-02-01
 var_dump(date("Y-m-d", strtotime("last day of last month", strtotime("2017-03-31"))));
+
+
+# mb_substr('函数',1,1,'utf-8');
+
+linux环境下要传入utf-8 才行
+
+
