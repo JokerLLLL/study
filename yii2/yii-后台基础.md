@@ -131,7 +131,7 @@ echo GridView::widget([
        },
       'formatter' => [
           'class' => 'yii\i18n\Formatter',
-          'nullDisplay' => '', //没有数据默认是not set 可以更改成 空字符串
+          'nullDisplay' => '-', //没有数据默认是not set 可以更改成 空字符串
        ],
     'options' => ['style'=>'overflow: auto; word-wrap: break-word;','id'=>'grid'],//应用全部字段
     //字段渲染

@@ -71,7 +71,8 @@ public function getOne()
 ```php
 <?php
 $tr = Yii::$app->db->beginTrancation();
-Yii::$app->db->createCommand("Select * form user_data where uid={$uid}")->qureyOne();
+// 只支持innodb引擎
+Yii::$app->db->createCommand("SELECT * FORM user_data WHERE uid={$uid} FOR UPDATE")->qureyOne();
 //查询表 user_data
 $model = UserData::findOne(['uid'=>$uid]);
 $model->save();

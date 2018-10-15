@@ -3,7 +3,7 @@ git reset --hard 版本号或Head^ 80f9292
 退回某个版本或上几个版本
 
 git reflog
-查看历史命令 (带上版本号)
+查看历史命令 (带上版本号) //查看历史版本号
 
 git checkout -- [filename]
 把工作区回退到最后一次 git add 或 git commit 的状态
