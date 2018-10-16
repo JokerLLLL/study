@@ -39,9 +39,10 @@ create table `log`
                 ],
                 [
                     'class'=>'yii\log\DbTarget',
-                    'logVars' => [''], //可追加的 _SERVER _COOKIE 等 
+                    'logTable' => 'db_log', //指定表明
+                    'logVars' => ['_SERVER'], //可追加的 _SERVER _COOKIE 等 
                     'levels'=>['info','error','warning'],
-                    'categories'=>['category'],
+                    'categories'=>['debug','log'],
                 ]
             ],
         ];
