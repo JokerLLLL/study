@@ -14,7 +14,7 @@ class UploadController extends Controller
                if($info && in_array($info)) {
                      return $info;
                 }else{
-                   return ['code'=>1,'msg'=>'error'];
+                   throw new Exception(current($model->errors)[0]);
                }
 
            }catch(\Exception $e) {

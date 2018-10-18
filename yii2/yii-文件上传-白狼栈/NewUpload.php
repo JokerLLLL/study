@@ -1,5 +1,5 @@
 <?php
-/**
+/** 单文件上传
  * Created by PhpStorm.
  * User: jokerl
  * Date: 2018/9/21
@@ -38,18 +38,17 @@ class NewUpload extends Model
                 FileHelper::createDirectory($relativePath);
             }
             $fileName = $this->file->baseName . '.' . $this->file->extension;
+            //随机一个名字
+
+
             $this->file->saveAs($relativePath . $fileName);
             return [
                 'code' => 0,
-                'url' =>  Yii::$app->param['base_img_url'].$fileName,      //url地址
-                'attachment' => Yii::$app->param['base_img_url'].$fileName,  //入库地址
+                'url' =>  Yii::$app->param['webuploader']['base_img_url'].$fileName,      //url地址 用于查图片地址
+                'attachment' => Yii::$app->param['webuploader']['base_img_url'].$fileName,  //入库地址
             ];
         } else {
-            $errors = $this->errors;
-            return [
-                'code' => 1,
-                'msg' => current($errors)[0]
-            ];
+            return false;
         }
 
     }
