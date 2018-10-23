@@ -136,6 +136,9 @@ if ($data === false) {
     $cache->set($key, $data);
 }
 
+// add 没有key且设置成返回 true ；存在key或失败 返回false 可用于并发锁
+$cache->add($key,$data,$time);
+
 
 
 //yii 2.0.11 之后封装 getOrSet($key, $closure, $duration=null, $dependency=null) 方法
