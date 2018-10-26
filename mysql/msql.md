@@ -19,6 +19,8 @@ format格式：http://www.w3school.com.cn/sql/func_date_format.asp
 select uid,userid,username,email,FROM_UNIXTIME(addtime,'%Y年%m月%d') from members;
 SELECT *,FROM_UNIXTIME(UNIX_TIMESTAMP(create_time),'%Y-%m-%d %H') as atime FROM `machine_room_log`;
 
+SELECT *,FROM_UNIXTIME(left(log_time,10),'%Y-%m-%d %H:%i:%s') as create_time FROM `db_log`;
+
 
 //字段裁切
 

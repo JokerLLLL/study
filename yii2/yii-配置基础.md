@@ -152,7 +152,7 @@ public function getOrSet($key, \Closure $closure, $duration=null, $dependency=nu
      
      $value = call_user_func_array($closure,$this);
      if(!$this->set($key,$value,$duration,$dependency)) {
-         Yii::warnning('set key failed:'.json_encode($value),__METHOD__);
+         Yii::warning('set key failed:'.json_encode($value),__METHOD__);
      }
      return $value; 
 }

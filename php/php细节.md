@@ -33,3 +33,16 @@ var_dump(date("Y-m-d", strtotime("last day of last month", strtotime("2017-03-31
 linux环境下要传入utf-8 才行
 
 
+# 运算符先后
+
+// 得到的 $var 是比较的boolean值
+if($var = $a === $b) {
+  return $var;
+}
+
+// 得到的 $var 是$a 的赋值
+if(($var = $a) === $b) {
+    return $var;
+}
+
+
