@@ -9,6 +9,16 @@ fdisk  -l              #查看硬盘
 ifconfig -a            #查看网卡
 
 
+# 查看linux版本号
+cat /proc/version
+uname -a
+cat /etc/redhat-release
+
+# 安全selinux
+setenforce 0 //关闭
+setenforce 1 //开启
+
+
 #查看进程
 ps aux|grep server.php        #查看进程
 pstree -ap|grep server.php    #查看进程树
