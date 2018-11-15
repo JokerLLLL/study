@@ -34,6 +34,8 @@ tail -f /var/log/cron        #执行过的定时任务 (日志信息)
 
 59 1 1-7 4 * test `date +\%w` = 0 && /root/a.sh #表示4月第一个星期日 1:59分
 
+0 0 * * Thu bash -c '(($(date +\%s) / 86400 \% 14))' && your-script
+
 #计划任务中的% 要是变成\%
 
 #每半分钟执行任务(用到了sleep 30s)
