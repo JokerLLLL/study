@@ -70,6 +70,7 @@ Class DateHandle{
                 } else { $crc = $crc >> 1; }
             }
         }
+        //TODO 补零
         return dechex($crc);
     }
 
@@ -99,6 +100,7 @@ Class DateHandle{
         for ($x = 0; $x < strlen ($string); $x++) {
             $crc = $crc ^ ord($string[$x]);
         }
+        // TODO 补零
         return dechex($crc);
     }
 

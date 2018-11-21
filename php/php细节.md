@@ -45,4 +45,12 @@ if(($var = $a) === $b) {
     return $var;
 }
 
+# 无限极参数
+
+php 7 的特性
+
+funciton(...$params){
+    var_dump($params);
+}
+
 

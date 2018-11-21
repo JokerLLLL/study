@@ -36,3 +36,7 @@ composer require mdmsoft/yii2-admin "2.x-dev"
 #依赖composer.lock文件 可以通过 composer update 进行更新
 
 
+
+# composer基础 
+
+
