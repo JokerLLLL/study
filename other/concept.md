@@ -9,3 +9,11 @@
 
 
 # IOC 控制反转 / DI 依赖注入
+
+
+# 单利模式
+   在程序的生命周期里 只初始化一次
+  if (null !== self::$loader) {
+      return self::$loader;
+  }
+  /** 逻辑 ...
