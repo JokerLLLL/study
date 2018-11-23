@@ -1,3 +1,6 @@
+#密钥创建
+ssh-keygen
+
 #版本回退
 git reset --hard 版本号或Head^ 80f9292 
 退回某个版本或上几个版本
@@ -70,6 +73,12 @@ git stash pop
 恢复+丢弃
 
 #远程仓库 + 多人合作
+
+/* 远程仓库 */
+git remote rm origin //移除
+git remote add origin git@xxx/xx.git //添加
+git remote -v
+
 
 git init --bare
 创建远程的中心仓库

@@ -39,4 +39,5 @@ composer require mdmsoft/yii2-admin "2.x-dev"
 
 # composer基础 
 
+删除包 composer remove name/pack_name
 
