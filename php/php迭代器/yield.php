@@ -35,7 +35,7 @@ var_dump($gen->valid());
 
 
 /**
- 说明 yield 实现 Iterator的 迭代器
+ 说明 yield 实现 Iterator的 迭代器         =》返回的是 final class Generator implements Iterator{}
 */
 
 
@@ -46,14 +46,14 @@ var_dump($gen->valid());
 4.Generator类实现了Iterator接口。
 5.可以通过返回的Generator对象内部的方法，获取到函数内部yield后面表达式的值。
  *
-6.可以通过Generator的send方法给yield 关键字赋一个值。
+6.可以通过Generator的send方法给yield 关键字赋一个值。                 //实现swoole协成的关键
 7.一旦返回的Generator对象被遍历完成，便不能调用他的rewind方法来重置
 8.Generato
 */
 
 
 echo $gen->send("send value - ");
-//代替 yeild 关键字处的值 返回值是 next() current()的值
+//代替 yeild 关键字处的值 返回值是 next() current()的值 //说明迭代了一次
 
 //e.g
 function gen4(){
