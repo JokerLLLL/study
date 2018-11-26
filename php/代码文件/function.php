@@ -20,6 +20,10 @@ function more_args2() {
         echo "第".$i."个参数是".func_get_arg($i)."<br>";//分别输出传入函数的每个参数
     }
 }
+/* php7 */
+function more_args3(...$params){
+    var_dump($params);
+}
 more_args("one", "two", "three", 1, 2, 3);           //调用函数并输入多个参数
 
 

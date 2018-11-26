@@ -17,3 +17,19 @@
 #拉取
  git clone git@server:/srv/sample.git
  
+ 
+ 
+
+# 快速将一个普通库变成裸库 #
+
+原理 就是将 .git 变成 xxx.git 然后 git config --bool core.bare true
+
+cd repo
+mv .git ../repo.git # renaming just for clarity
+cd ..
+rm -fr repo
+cd repo.git
+git config --bool core.bare true
+
+
+ 

@@ -53,7 +53,7 @@ Push & Pull
 
                    git config --global user.email "145645529@qq.com"
 
-别名配置alias     git config --global alias.co checkou #别名
+别名配置alias     git config --global alias.co checkout #别名
 
                   git config --global alias.ci commit
 

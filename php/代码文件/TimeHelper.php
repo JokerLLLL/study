@@ -127,9 +127,9 @@ class TimeHelper
      * @param $desc
      * @param string $format
      * @return false|string
-     * e.g: self::getDescDate('-1 days'); //'last day of -1 month' // '-1 day'
+     * e.g: self::strToTime('-1 days'); //'last day of -1 month' // '-1 day'
      */
-       public static function getDescDate($desc,$format = 'Y-m-d H:i:s')
+       public static function strToTime($desc,$format = 'Y-m-d H:i:s')
        {
             return date($format,strtotime($desc));
        }
