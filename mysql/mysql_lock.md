@@ -1,3 +1,5 @@
+```sql
+
 // mysql 的 线程锁 只有 get_lock 释放掉之后 才会执行 下个 get_lock ,而不是直接跳过
 select get_lock('key_lock', 100);
 

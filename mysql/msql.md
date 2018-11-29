@@ -45,6 +45,26 @@ UPDATE hy_brand set `logo` = CONCAT('http://obd-admin.com/brand_logo/',`logo_bp`
 
 ```
 
+# mysql  查询重复
+
+```sql
+
+select * from order_notice  where id in (select id from order_notice where uid = :uid group by end_time having count(id) > 1);
+
+// 正确示例
+select * from order_notice p1 WHERE (p1.uid,p1.end_time) in (SELECT uid,end_time from order_notice group by uid,end_time HAVING count(*) > 1);
+
+
+// 不需要最小值的重复数据
+SELECT * FROM order_notice WHERE (uid,end_time) IN (SELECT  uid,end_time FROM order_notice GROUP BY uid,end_time HAVING  COUNT(*) > 1) AND id NOT (SELECT MAX(id) FROM order_notice GROUP BY uid,end_time HAVING COUNT(*) >1);
+
+```
+
+```sql
+// n2级别的排序  不可取  //而且重复数据 id会重复  错误事例  ！！！
+!SQLERROR: select p1.* from order_notice p1, order_notice p2 where p1.id <> p2.id and p1.end_time = p2.end_time and p1.uid = p2.uid;
+
+```
 
 
 

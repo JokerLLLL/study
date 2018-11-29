@@ -158,6 +158,8 @@ curl -v www.baidu.com >> /dev/null
 #openssl 证书生成
 openssl req -x509 -newkey rsa:2048 -nodes -sha256 -keyout server-private.pem -out server-cert.pem
 
+# sftp
+get filename
 
 
 
