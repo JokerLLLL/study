@@ -55,6 +55,8 @@ return [
   ['a1','exist'],
   ['a1', 'exist', 'targetAttribute'=>'a2'],  //验证a1的值是否存在a2中 存在返回true
   [['a1','a2'],'exist','targetAttribute'=>['a1','a2']], //a1 a2的值有需要存在 且都相互报错
+  //数据表存在
+  [['uid'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['uid' => 'id']],
 
   //file 文件验证 大小尺寸单位byte
   //FileValidator 通常与 yii\web\UploadedFile 共同使用

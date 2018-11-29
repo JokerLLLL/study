@@ -79,7 +79,22 @@ rm  -rf   1.html               #强制删除
 
 #swoole编译安装
 phpize                                #关联到PHP拓展库
+/*
+ 7以上 需要的扩展
+yum -y install php70w-devel
+
+
+
+*/
+
 ./configure   --enable-async-redis    #启用异步redis  需要安装hiredis  C客户端的支持
+
+/*
+configure 出错
+：出现该情况是由于c++编译器的相关package没有安装，在终端上执行：
+　　$ sudo yum install glibc-headers gcc-c++
+*/
+
 
 pcre库的依赖
     ubuntu/debian环境://apt-get install libpcre3 libpcre3-dev

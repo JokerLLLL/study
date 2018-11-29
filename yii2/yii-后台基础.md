@@ -234,5 +234,6 @@ $model->upload();
                 $('.alert').alert('close');
             }, 3000);
         </script>
-
+// 必须在这之前
+<?=$content ?>
 ````

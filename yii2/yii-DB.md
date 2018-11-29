@@ -82,6 +82,53 @@ $tr->commit();
 ```
 
 
+```php
+<?php
+//查询构建
+
+1 . asArray() ；
+2 . 要只查主表字段 circle.* ；
+3 . 相同表要 from('表明 as 别名区分')；
+
+$sql = 
+<<<sql
+SELECT `circle`.*
+FROM `circle`
+LEFT JOIN `user_data`
+	ON `circle`.`uid` = `user_data`.`uid`
+LEFT JOIN `circle_comment` `cir_com_1`
+	ON `circle`.`id` = `cir_com_1`.`cir_id`
+LEFT JOIN `user_data` `u1`
+	ON `cir_com_1`.`uid` = `u1`.`uid`
+LEFT JOIN `circle_comment`
+	ON `cir_com_1`.`to_comment_id` = `circle_comment`.`id`
+LEFT JOIN `user_data` `u2`
+	ON `circle_comment`.`uid` = `u2`.`uid`
+ORDER BY  `circle`.`create_time` DESC LIMIT 10
+sql;
+
+ return $circles = Circle::find()->asArray()->select('circle.*')
+             ->joinWith(['author'=>function($query) {
+                 return $query->select(['uid','nickname','head_url','phone']);
+             }])
+             ->joinWith([
+                 'comments'=>function($query){
+                    return $query->from('circle_comment as cir_com_1');
+                 },
+                 'comments.u'=>function($query) {
+                    return $query->select(['uid','nickname','head_url','phone'])->from('user_data as u1');
+                  },
+                  'comments.toComment.u'=>function($query) {
+                     return $query->select(['uid','nickname','head_url','phone'])->from('user_data as u2');
+                  }
+              ])
+             ->orderBy(['circle.create_time'=>SORT_DESC])
+             ->limit($this->limit)->offset($this->limit*$this->page)
+//             ->createCommand()->getRawSql();
+//           var_dump($circles);
+            ->all();
+
+```
 
 
 
