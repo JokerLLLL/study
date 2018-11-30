@@ -53,4 +53,7 @@ funciton(...$params){
     var_dump($params);
 }
 
+/* @var $example boolean or 'test''*/
+$example = empty($a) ??'test';
+
 

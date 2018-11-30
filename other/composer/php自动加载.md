@@ -20,3 +20,7 @@ func/help.php 就好被加载中
 
 composer dump-autoload  
 
+ 执行 composer dumpautoload -o
+
+可自动化生成 autoload.php
+[url](https://juejin.im/post/58b50896128fe10065e68010)
