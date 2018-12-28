@@ -20,9 +20,16 @@ require_once 'Test.php';
      function __construct(float $a)
      {
      }
+     function say()
+     {
+
+     }
  }
 
 
 $r = (new Test())->get(__DIR__.'/test');
 
  var_dump($r);
+
+
+(new class extends B{})->say();
