@@ -14,6 +14,9 @@ cat /proc/version
 uname -a
 cat /etc/redhat-release
 
+lsb_release -a
+
+
 # 安全selinux
 setenforce 0 //关闭
 setenforce 1 //开启
@@ -108,15 +111,32 @@ find / -name nginx*                   #匹配所有nginx的目录以及文件
 
 #vim
 命令行模式：
+   
     dd  删除所在行
+    3dd 删除3行
+    d$  将所在行置为空白
+     
+    
     yy  复制所在行
+    3yy 复制3行
     p   粘贴
+    
+    
     u   撤销
+    ctrl+r	撤销更改
+    
+    0  单行行首
+    gg 文件首
+    G  文件尾
+    
+    
 输入模式：
     :set nu   设置行号
     :set nonu 取消行号
     :2        跳到第几行
+    :!        外部命令
     /xx       查找xx  按n查找下一处
+    ?xx       反向xx  查找上一出
 编辑模式：
   
   
