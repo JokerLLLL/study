@@ -21,7 +21,7 @@ class Test
 
      }
 
-     public function get($file):resource
+     public function get($file):void
      {
          $handle = fopen($file, 'r');
          if ($handle !== false)

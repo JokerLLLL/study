@@ -103,6 +103,21 @@ git branch --set-upstream-to=origin/develop
 git push [origin] [master]
 在哪个分支下使用 push 就推送那个分支 或向这样完整写明
 
+git branch -vv
+
+//查看本地分支 和远程分支关系 和修改分支关系
+① 进入当前项目根目录的’.git’文件夹(请自行设置显示隐藏文件)。打开config文件（注意不要用window记事本打开）。
+② [remote "origin"]这一项是修改对应远程Git仓库地址。
+③ [branch "master"]这一项是修改本地分支‘master’的远程追踪关系分支，直接修改merge = refs/heads/master为merge = refs/heads/dev
+④ 再次通过命令行查看状态就可以发现你的远程分支已经改掉。
+⑤ 可能出现的问题补充： 
+没有[branch "master"]这一项怎么办？ 
+如果是新项目，没有git pull或git clone，就不会与远程分支建立关系，或者也可以自己添加这一项，但不建议。
+
+
+
+
+
 #标签功能
 git tag
 查看所以标签
