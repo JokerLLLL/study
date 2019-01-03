@@ -8,6 +8,8 @@ cat /proc/cpuinfo      #查看cup
 fdisk  -l              #查看硬盘
 ifconfig -a            #查看网卡
 
+#更换root密码
+sudo passwd
 
 # 查看linux版本号
 cat /proc/version
@@ -25,6 +27,8 @@ setenforce 1 //开启
 #查看进程
 ps aux|grep server.php        #查看进程
 pstree -ap|grep server.php    #查看进程树
+
+ps auxw|head -1;ps auxw|sort -rn -k3|head -10  # 查看cup占大的进程
 
 ll /proc/进程号               #通过进程号查看进程信息       
 
