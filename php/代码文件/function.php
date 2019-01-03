@@ -142,4 +142,18 @@ function sctonum($num, $double = 5){
 
 echo sctonum(2.1E-5, 6); //输出0.000021
 
+/** 过滤表情
+ * @param $str
+ * @return mixed
+ */
+function filterEmoji($str)
+{
+    $str = preg_replace_callback(
+        '/./u',
+        function (array $match) {
+            return strlen($match[0]) >= 4 ? '[emoji]' : $match[0];
+        },
+        $str);
+    return $str;
+}
 
