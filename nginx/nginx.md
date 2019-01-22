@@ -505,7 +505,7 @@ server {
       ~*   正则不区分大小写
     (location =) > (location 完整路径) > (location ^~ 路径) > (location ~,~* 正则顺序) > (location 部分起始路径) > (/)
 
-   try_file：检查文件是否存在   root 只有在server模块下拼接uri尝试文件是否存在  而对于index.php脚本是以server模块下的root去拼接执行
+   try_file：检查文件是否存在   root 只有在server模块下拼接uri尝试文件是否存在  而对于index.php脚本是以server模块下的root去拼接执行  拼接 [index.php] 使用前必须 变成 /index.php?$args
       location / {
         try_files $uri $uri/ /index.php;
       }

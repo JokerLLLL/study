@@ -79,3 +79,11 @@ Push & Pull
 比较命令diff(比较add之前的改动）
 
                   git diff
+
+
+#本地修改不提交到远程仓库
+git update-index --assume-unchanged [filename]  
+#取消本地忽略
+git update-index --no-assume-unchanged [filenae]
+#查看本地仓库哪些文件被加入忽略列表
+git ls-files -v
