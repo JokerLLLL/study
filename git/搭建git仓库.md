@@ -19,7 +19,6 @@
  
  
  
-
 # 快速将一个普通库变成裸库 #
 
 原理 就是将 .git 变成 xxx.git 然后 git config --bool core.bare true

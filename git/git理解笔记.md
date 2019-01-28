@@ -80,11 +80,14 @@ git remote add origin git@xxx/xx.git //添加
 git remote -v
 
 
-git init --bare
-创建远程的中心仓库
+# 更改远程仓库地址
+git remote set-url origin http://192.168.100.235:9797/john/git_test.git
 
+#创建远程的中心仓库
+git init --bare
+
+#得到远程默认仓库名，一般都为origin
 git remote
-得到远程默认仓库名，一般都为origin
 
 git remote -v
 查看具体可以push 和pull的源
