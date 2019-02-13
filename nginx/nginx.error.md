@@ -18,7 +18,7 @@ server {
         root /var/www/html/eshow/backend/web;
 
         location / {
-                try_files $uri /index.php?$args $uri/ =404;
+                try_files $uri $uri/ /index.php?$args $uri/ =404;
         }
        
         location ~ \.php$ {
@@ -29,6 +29,7 @@ server {
 }
 ```
 
+$uri/ 会补全index 的枚举尝试路由调用
 
 ps aux | grep "nginx: worker process" | awk '{print $1}'
 查看工作用户 和  启动用户
