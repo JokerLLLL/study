@@ -197,8 +197,11 @@ curl -v www.baidu.com >> /dev/null
 #openssl 证书生成
 openssl req -x509 -newkey rsa:2048 -nodes -sha256 -keyout server-private.pem -out server-cert.pem
 
-# sftp
+# sftp scp 
 get filename
+put filename  /root/
+scp -r root@192.163.0.1:/root/to_copy /root/after_copy/  #从服务器靠过来
+scp -r /root/local  root@192.163.0.1:/root/test          #本地拷到服务器
 
 
 
