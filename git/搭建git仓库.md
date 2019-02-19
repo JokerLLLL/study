@@ -31,4 +31,11 @@ cd repo.git
 git config --bool core.bare true
 
 
+
+
+# 快速fork一个仓库
+
+# https://www.jianshu.com/p/29775d91f536
+
+新建一个远程空仓库 -> 拉取 -> 添加upstream地址 -> fetch upstream -> merge 到 origin -> push 到远程仓库
  
