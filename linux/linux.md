@@ -45,6 +45,9 @@ kill -l    所有信号
 
 kill -SIGUSR1 7259  #重启配置文件
 
+###### 强制杀死进程22225进程
+kill -s 9  22225
+
 #端口查看
 lsof -i:9505
 netstat -anp|grep 9505

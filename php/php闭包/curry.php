@@ -29,7 +29,7 @@ function curry( $fn )
     return $retFn;
 }
 
-$fn = curry( 'add', 5 );
+$fn = curry( 'add', 5 );  //fn = function(){ call_func('add',[5] + func_get_args()}  + 3
 
 var_dump( $fn( 3 )); // = 8
 
