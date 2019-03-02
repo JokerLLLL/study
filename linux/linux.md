@@ -186,6 +186,13 @@ awk编辑器
 #快速编辑去除 空白和#注释的配置文件
 cat xx.conf|grep -v "^$"|grep -v "#">>xx3.conf
 
+# grep 用法 
+-r 递归 -n 显示行号 -l 列出文件
+grep -rn "test"  file1 file2 file3..
+grep -l "text" file1 file2 file3..
+grep -lZ "test" *|xargs -0 rm 删除含test的文件
+
+
 ls -lh 查看文件大小
 
 #查看端口
