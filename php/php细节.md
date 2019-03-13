@@ -56,4 +56,8 @@ funciton(...$params){
 /* @var $example boolean or 'test''*/
 $example = empty($a) ??'test';
 
+## php引用的坑
+http://php.net/manual/en/function.unset.php
+https://blog.csdn.net/tingliting/article/details/49615135
 
+引用传值 unset销毁标识符 不能销毁原值 unset只是断开 标识符和指向的内容，引用 刚好是断开前标识符和变量的

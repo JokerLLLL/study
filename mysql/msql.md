@@ -7,8 +7,18 @@
 
 //设备批量查询日志里的  最新或最旧的消息 
 
-#列里 嵌套列表 
-$sql = "SELECT * from band_step where id in (SELECT  max(id) from band_step where MID in (\"{$deviceList2}\") GROUP BY MID)";  //max 时间可能重复 in id解决 不然子查询和外查询都要加 in deviceList条件 还要group by
+# 列里 嵌套列表(或分组后端前三条)
+$sql = "SELECT * from band_step where id in
+     (SELECT  max(id) from band_step where MID in (\"{$deviceList2}\") GROUP BY MID)";  //max 时间可能重复 in id解决 不然子查询和外查询都要加 in deviceList条件 还要group by
+
+
+e.g. <<< 该例子 不不严谨 查询慢。 cat_id 分组 每个分组 价格最高前两条 （坑：若果第二和第三....一样就会造成都查出来）
+ SELECT a.* FROM `mygoods` as a 
+     WHERE  
+     (SELECT COUNT(*) FROM `mygoods` WHERE cat_id = a.cat_id AND price > a.price ) < 2 //判断这个分组的前面数据是<2的 
+     ORDER BY a.cat_id asc ,a.price DESC 
+说明： 
+
 
 
 # 字段裁切
@@ -66,6 +76,11 @@ SELECT * FROM order_notice WHERE (uid,end_time) IN (SELECT  uid,end_time FROM or
 
 ```
 
+
+// 重复都查询出来
+```sql
+EXPLAIN SELECT a1.* FROM `user` as a1 WHERE (SELECT count(*) FROM `user` WHERE phone = a1.phone) > 1;
+```
 
 
 
