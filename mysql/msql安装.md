@@ -17,6 +17,7 @@ system start mysqld
 mysql> UPDATE mysql.user SET Password = PASSWORD('root') WHERE User = 'root';
 #远程授权连接
 mysql> update user set host = '%' where user = 'root';
+## ！！记得重启服务！！
 
 #查看配置文件
    netstat -lunapt|grep 3306
