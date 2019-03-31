@@ -20,6 +20,8 @@ vagrant ssh  # SSH 至虚拟机
 vagrant vstatus  # 查看虚拟机运行状态
 vagrant destroy  # 销毁当前虚拟机
 
+## 备份box系统
+vagrant package --output backup.box
 
 ## 注意事项
 使用 Apache/Nginx 时会出现诸如图片修改后但页面刷新仍然是旧文件的情况，是由于静态文件缓存造成的。需要对虚拟机里的 Apache/Nginx 配置文件进行修改：
