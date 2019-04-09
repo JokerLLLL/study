@@ -119,7 +119,20 @@ git branch -vv
 
 
 
+## git多次分支整合一个分支 -i 交互 
 
+    git rebase -i develop
+    将 pick 改成 s
+    重设提交信息
+    
+    git rebase --abort
+    重设提交事务
+
+
+## git 获取最后一次id
+    git rev-parse HEAD
+    git config --global alias.last "rev-parse HEAD"
+    
 
 #标签功能
 git tag

@@ -84,3 +84,36 @@ EXPLAIN SELECT a1.* FROM `user` as a1 WHERE (SELECT count(*) FROM `user` WHERE p
 
 
 
+// 磁盘大小用量统计
+
+```sql
+# 统计单张表
+select 
+    (data_length+index_length)/1024/1024 M 
+from 
+    information_schema.tables 
+where 
+    table_schema="db_name" and table_name='table_name';
+
+#查看整个数据库的磁盘用量
+select 
+    sum((data_length+index_length)/1024/1024) M
+from 
+    information_schema.tables 
+where 
+    table_schema="db_name" ;
+
+
+#查看整个mysql server 所有数据库的磁盘用量
+select 
+    table_schema, sum((data_length+index_length)/1024/1024) M
+from 
+    information_schema.tables 
+where 
+    table_schema is not null 
+group by 
+    table_schema;
+
+
+```
+
