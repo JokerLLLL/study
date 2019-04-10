@@ -5,6 +5,9 @@ ssh-keygen
 git reset --hard 版本号或Head^ 80f9292 
 退回某个版本或上几个版本
 
+git reset 版本号
+版本库里版本号回滚，本地不撤销
+
 git reflog
 查看历史命令 (带上版本号) //查看历史版本号 用于查找版本号得更替
 
