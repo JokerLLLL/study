@@ -137,6 +137,21 @@ git branch -vv
     git rev-parse HEAD
     git config --global alias.last "rev-parse HEAD"
     
+## Git --cherry-pick  38361a55 
+    https://www.jianshu.com/p/08c3f1804b36
+    将其他分支的版本信息裁切到这个分支上并提交
+
+
+
+## Git 文件权限控制
+
+    查看文件权限 git ls-tree HEAD
+
+    原文：https://blog.csdn.net/taiyangdao/article/details/78398383 
+    git add --chmod=+x myFile
+    git update-index --chmod=+x myFile    
+    git add --chmod=-x myFilegit update-index --chmod=-x myFile
+    
 
 #标签功能
 git tag
