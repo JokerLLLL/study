@@ -214,4 +214,6 @@ scp -r root@192.163.0.1:/root/to_copy /root/after_copy/  #从服务器靠过来
 scp -r /root/local  root@192.163.0.1:/root/test          #本地拷到服务器
 
 
-
+## 磁盘命令
+df -h
+du --max-depth=1 -h
