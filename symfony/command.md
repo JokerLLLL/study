@@ -1,7 +1,7 @@
 
 ###更新数据库表 （过滤外键） 
   
- php app/console ops:doctrine:schema:update --force
+######  php app/console ops:doctrine:schema:update --force
 
 ###测试环境创建 
 

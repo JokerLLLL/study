@@ -106,6 +106,28 @@ class RequestService
         return $xml;
     }
 
+    public static function arrayToXmlLast(array $ar, $root = self::XML_ROOT, $rootAttrs = [])
+    {
+        $xml = new \SimpleXMLElement(self::XML_HEAD.'<'.$root.'>'.'</'.$root.'>');
+        foreach ($rootAttrs as $key => $value) {
+            $xml->addAttribute($key, $value);
+        }
+        self::RecursiveXML($xml, $ar);
+        return $xml->asXML();
+    }
+
+    private static function RecursiveXML(\SimpleXMLElement $xml, array $element)
+    {
+        foreach ($element as $k => $v) {
+            if (is_array($v)) {
+                $ch = $xml->addChild($k);
+                self::RecursiveXML($ch, $v);
+            } else {
+                $xml->addChild($k, str_replace("&", "&amp;", $v));
+            }
+        }
+    }
+
     /** xmlToArray
      * @param $xml
      * @return mixed
