@@ -137,7 +137,7 @@ git branch -vv
     git rev-parse HEAD
     git config --global alias.last "rev-parse HEAD"
     
-## Git --cherry-pick  38361a55 
+## Git cherry-pick  38361a55 
     https://www.jianshu.com/p/08c3f1804b36
     将其他分支的版本信息裁切到这个分支上并提交
 
