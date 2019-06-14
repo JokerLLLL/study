@@ -33,3 +33,10 @@
         var_dump($group->getDescription());die;
         
         
+## ORM Object-Relational Mapper 
+
+## Entity (字段 关系)   Repository(对象操作集合)  Proxy Class(代理类)
+
+
+## dump doctrine
+延迟加载代理总是包含Doctrine的EntityManager及其所有依赖项的实例。因此，var \ _dump（）可能会转储一个非常大的递归结构，这种结构无法呈现和读取。您必须使用 Doctrine\Common\Util\Debug::dump()将转储限制为人类可读的级别。此外，您应该知道将EntityManager转储到浏览器可能需要几分钟，而Debug :: dump（）方法只是忽略它在Proxy实例中出现的任何情况。
