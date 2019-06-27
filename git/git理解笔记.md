@@ -51,6 +51,9 @@ git branch -d develop
 git branch -D feature
 强制删除分支 {feature有提交，但未进行合并，会进行数据丢失}
 
+git push origin --delete develop_19448
+远程分支删除
+
 git merge develop
 在master分支中执行，合并 {这种合并会是fast forward,会破会树形结构,或会产生recursive报警=此时效果和--no-ff参数一样}
 
