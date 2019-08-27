@@ -65,3 +65,15 @@ http://php.net/manual/en/function.unset.php
 https://blog.csdn.net/tingliting/article/details/49615135
 
 引用传值 unset销毁标识符 不能销毁原值 unset只是断开 标识符和指向的内容，引用 刚好是断开前标识符和变量的
+
+
+###  php  ?? 和 ?: 的区别
+
+
+$a ?? 0 等同于 isset($a) ? $a : 0。
+
+$a ?: 0 等同于 $a ? $a : 0。
+
+empty: 判断一个变量是否为空(null、false、00、0、'0'、』这类，都会返回true)。
+
+isset: 判断一个变量是否设置(值为false、00、0、'0'、』这类，也会返回true)。

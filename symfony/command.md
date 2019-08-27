@@ -19,4 +19,13 @@ php app/console config:dump_entities --flavor yy
 php app/console config:dump_entities --flavor uco
 
 
+### command 配置信息
+
+->addArgument('orderIds',  InputArgument::REQUIRED, "oms单号用英文,逗号隔开")  // $input->getArguments('orderIds'); 字符串 // ops:command 123  或 orderIds=123
+
+///或用 getArguments() 获取全部
+
+->addOption('index', null, InputOption::VALUE_OPTIONAL, 'index') //  $index = $input->getOption('index'); // ops:command --index 3 
+
+
 

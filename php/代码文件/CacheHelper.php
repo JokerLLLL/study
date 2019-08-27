@@ -48,14 +48,14 @@ class CacheHelper
      * @param null $dependency
      * @return bool|mixed
      */
-        public static function getOrSet($key, \Closure $closure, $duration = 0, $dependency=null)
+        public static function getOrSet($key, \Closure $closure, $duration = 0, $dependency = null)
         {
             if(($value = self::get($key)) !== false) {
                 return $value;
             }
 
             $value = call_user_func($closure);
-            if(!self::set($key,$value,$duration,$dependency)) {
+            if(!self::set($key, $value, $duration, $dependency)) {
                 \Yii::warning('set key failed:'.json_encode($value),__METHOD__);
             }
             return $value;

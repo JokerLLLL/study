@@ -119,6 +119,8 @@
 
 `array_intersect_assoc($arr1,$arr2);` 返回交集结果数组，键名也做比较
 
+`array_intersect_key` 返回健名的交际、
+
 # 其他数组函数 #
 
 `array_unique($arr);` 移除数组中重复的值，新的数组中会保留原始的键名

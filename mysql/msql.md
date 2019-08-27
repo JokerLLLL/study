@@ -117,3 +117,45 @@ group by
 
 ```
 
+
+#中间表
+
+```sql
+UPDATE Queue 
+SET isProcessed=1, isDeleted = 1
+WHERE
+    id IN (
+SELECT
+    a.id 
+FROM
+    (
+SELECT
+    q.id 
+FROM
+    `Queue` q
+    LEFT JOIN SalesOrder AS s ON q.entityId = s.id 
+WHERE
+    q.mark = 'TMS_DELIVERY_CHECKING' 
+    AND q.queueType = 'SALESORDER' 
+    AND q.isProcessed = 0 
+    AND s.preferredDeliveryCompany NOT IN (
+    'guo_xiao',
+    'ems_kdbg',
+    'jing_ji',
+    'ems',
+    'quan_feng',
+    'yuantong',
+    'sf_ruitai',
+    'you_su',
+    'zhongtong',
+    'huitong',
+    'shentong',
+    ' zhaijisong',
+    'yun_da',
+    'shun_feng',
+    'kuaijie',
+    'sf_weixiao' 
+    ) 
+    ) AS a 
+    )
+```
