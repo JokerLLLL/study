@@ -217,3 +217,11 @@ scp -r /root/local  root@192.163.0.1:/root/test          #本地拷到服务器
 ## 磁盘命令
 df -h
 du --max-depth=1 -h
+
+
+## .sh 问题
+/a.sh: /bin/bash^M: bad interpreter
+
+https://blog.csdn.net/youzhouliu/article/details/79051516
+
+sed -i "s/\r//" a.sh来转化 或 set fileformat=unix
