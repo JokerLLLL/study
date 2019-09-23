@@ -145,3 +145,23 @@ $ss = "ds\n fdafadsf";
 var_dump(strrpos($ss, "\n"));
 var_dump(substr($ss, 0, 2 + 1));
 
+
+#删除内容所在的某一行
+function delTargetLine($filePath, $target) {
+    $result      = null;
+    $fileCont    = file_get_contents($filePath);
+    $targetIndex = strpos($fileCont, $target); #查找目标字符串的坐标
+
+    if ($targetIndex !== false) {
+        #找到target的前一个换行符
+        $preChLineIndex = strrpos(substr($fileCont, 0, $targetIndex + 1), "\n");
+        #找到target的后一个换行符
+        $AfterChLineIndex = strpos(substr($fileCont, $targetIndex), "\n") + $targetIndex;
+        if ($preChLineIndex !== false && $AfterChLineIndex !== false) {
+            #重新写入删掉指定行后的内容
+            $result = substr($fileCont, 0, $preChLineIndex + 1) . substr($fileCont, $AfterChLineIndex + 1);
+            file_put_contents($filePath, $result);
+        }
+    }
+}
+
