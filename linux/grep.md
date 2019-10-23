@@ -2,4 +2,7 @@
 
 -v 或 --revert-match : 显示不包含匹配文本的所有行。
 
+grep 'content' file_name
+
+
 
