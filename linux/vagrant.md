@@ -5,7 +5,7 @@
 > https://www.virtualbox.org/wiki/Downloads      virtualBox
 > https://www.vagrantup.com/docs/cli/cloud.html   vagrant
 > http://www.vagrantbox.es/                       vagrant box 源
-
+>https://app.vagrantup.com/jinzhi/boxes/CentOS76-Lnmp
 
 # 添加镜像
 vagrant box add [名称] [源路径]
