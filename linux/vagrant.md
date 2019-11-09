@@ -36,3 +36,16 @@ sendfile off;
 ## 修改 访问方式为 host-only (配置单独IP)
 Vagrant 默认是使用端口映射方式将虚拟机的端口映射本地从而实现类似 http://localhost:80 这种访问方式，这种方式比较麻烦，新开和修改端口的时候都得编辑。相比较而言，host-only 模式显得方便多了。打开 Vagrantfile，将下面这行的注释去掉（移除 #）并保存：
 config.vm.network :private_network, ip: "192.168.20.14"
+
+
+
+## 错误信息
+
+处理：
+vagrant plugin expunge --reinstall
+
+错误：
+Error message given during initialization: Unable to resolve dependency: user requested 'vagrant-vbguest (= 0.17.2)'
+
+处理：
+vagrant plugin uninstall vagrant-vbguest
