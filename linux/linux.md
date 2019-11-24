@@ -20,9 +20,12 @@ lsb_release -a
 
 
 # 安全selinux
+
+sestatus // 查看状态
 setenforce 0 //关闭
 setenforce 1 //开启
-
+永久关闭：vim /etc/sysconfig/selinux
+SELINUX=enforcing 改为 SELINUX=disabled
 
 #查看进程
 ps aux|grep server.php        #查看进程

@@ -126,3 +126,17 @@
 `array_unique($arr);` 移除数组中重复的值，新的数组中会保留原始的键名
 
 `array_rand($arr,2);` 从数组中随机取出一个或 多个元素
+
+```php
+<?php
+//array_column($aa, $valueKey, (可选) $indexKey);
+
+$aa = [
+    ['id'=>1, 'name'=>'jack'],
+    ['id'=>2, 'name' => 'Lucy'],
+];
+
+var_dump(array_column($aa, 'name')); // [ 'jack','Lucy']
+var_dump(array_column($aa, 'name', 'id')); // [ 1=>'jack',2=>'Lucy']
+
+```
