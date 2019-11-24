@@ -33,6 +33,8 @@ centos安装：
          --add-repo \
          https://download.docker.com/linux/centos/docker-ce.repo
          
+     或手动添加： cd /etc/yum.repos.d/ && wget repository_url
+       
      sudo yum install docker-ce
      
      sudo systemctl start docker
@@ -64,4 +66,10 @@ centos安装：
    
      启动 +  docker run hello-world 成功;
    
-    
+
+
+# docker 修改国内镜像源
+
+https://www.jianshu.com/p/df75f9b5fcf6
+
+https://blog.csdn.net/whatday/article/details/86770609

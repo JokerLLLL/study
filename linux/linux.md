@@ -207,6 +207,12 @@ curl -v www.baidu.com >> /dev/null
 #openssl 证书生成
 openssl req -x509 -newkey rsa:2048 -nodes -sha256 -keyout server-private.pem -out server-cert.pem
 
+# linux lrzsz命令详解
+
+https://www.jianshu.com/p/384818a7e260 需要本地bash 支持打开windows文件框
+sz 发送到本地
+rz 发送到服务器 
+
 # sftp scp 
 get filename
 put filename  /root/
