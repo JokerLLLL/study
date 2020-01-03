@@ -20,6 +20,12 @@
                 }
              }
              
+             for(var key in jsonObj) {
+                console.log(key + '=>' + jsonObj[key]);
+             }
+             for(var i = 0; i < jsonArr.lenght; i ++) {
+                console.log(i + '=>' + jsonArr[i];
+             }
              
              // 数组添加
              json.push({

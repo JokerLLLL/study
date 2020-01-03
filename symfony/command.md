@@ -28,4 +28,14 @@ php app/console config:dump_entities --flavor uco
 ->addOption('index', null, InputOption::VALUE_OPTIONAL, 'index') //  $index = $input->getOption('index'); // ops:command --index 3 
 
 
+-- 环境
+./run.sh -i docker-reg.uco.com/uco/oms:jenkins-oms-master-2847 -o chenchaoliang@app20.uco.com -f stress start
+
+-- 测试 unit test
+
+./run.sh -i docker-reg.uco.com/uco/oms:jenkins-oms-master-2994 -d unittest src/Uco/OmsBundle/Tests/Service/ShunfengServiceTest.php
+
+./run.sh -i docker-reg.uco.com/uco/oms:jenkins-oms-master-2994 -d unittest --filter testConfirmCancelShipmentWithPendingReverseNotMerge 
+
+
 

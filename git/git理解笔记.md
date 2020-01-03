@@ -315,3 +315,6 @@ git update-index --assume-unchanged [filename]
 git update-index --no-assume-unchanged [filenae]
 #查看本地仓库哪些文件被加入忽略列表
 git ls-files -v
+
+# windows 别名修改
+/etc/profile.d/aliases.sh
