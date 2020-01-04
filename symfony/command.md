@@ -19,14 +19,7 @@ php app/console config:dump_entities --flavor yy
 php app/console config:dump_entities --flavor uco
 
 
-### command 配置信息
-
-->addArgument('orderIds',  InputArgument::REQUIRED, "oms单号用英文,逗号隔开")  // $input->getArguments('orderIds'); 字符串 // ops:command 123  或 orderIds=123
-
-///或用 getArguments() 获取全部
-
-->addOption('index', null, InputOption::VALUE_OPTIONAL, 'index') //  $index = $input->getOption('index'); // ops:command --index 3 
-
+## uco 单元测试命令
 
 -- 环境
 ./run.sh -i docker-reg.uco.com/uco/oms:jenkins-oms-master-2847 -o chenchaoliang@app20.uco.com -f stress start
@@ -38,4 +31,26 @@ php app/console config:dump_entities --flavor uco
 ./run.sh -i docker-reg.uco.com/uco/oms:jenkins-oms-master-2994 -d unittest --filter testConfirmCancelShipmentWithPendingReverseNotMerge 
 
 
+# 缓存清理
+php bin/console cache:clear --env=prod --no-debug
+
+# bundle 创建
+php bin/console generate:bundle --namespace=Acme/TestBundle
+
+
+
+### command 配置信息
+
+->addArgument('orderIds',  InputArgument::REQUIRED, "oms单号用英文,逗号隔开")  // $input->getArguments('orderIds'); 字符串 // ops:command 123  或 orderIds=123
+
+///或用 getArguments() 获取全部
+
+->addOption('index', null, InputOption::VALUE_OPTIONAL, 'index') //  $index = $input->getOption('index'); // ops:command --index 3 
+
+命令通过类来定义，这些类必须存放在你的bundle (如 AppBundle\Command) 的 Command 命名空间下。类名必须是 Command 后缀。
+
+继承 ContainerAwareCommand 获取容器。
+
+-- 测试命令
+http://www.symfonychina.com/doc/current/console.html
 
