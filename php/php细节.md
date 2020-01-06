@@ -83,10 +83,3 @@ isset: 判断一个变量是否设置(值为false、00、0、'0'、』这类，�
 
 php -l test.php  检查语法错误
 
-
-### 正整数判断
-
-$day = '11';
-if(floor($day) == $day) {
-    echo '正整数';
-}

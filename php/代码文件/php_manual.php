@@ -25,3 +25,20 @@ echo bcpow(3.3,2,2).PHP_EOL;
 
 //精度比较
 echo bccomp(1.0003,1,6).PHP_EOL;
+
+
+//判断正整数
+
+### 正整数判断
+$day = '111';
+
+if(preg_match("/^[1-9][0-9]*$/", $day)) { /// 排除了 0111
+   echo '正整数';
+}
+
+if(is_numeric($day) && floor(abs($day)) == $day) { // 全部；
+    echo '正整数';
+}
+
+
+
