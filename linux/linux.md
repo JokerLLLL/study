@@ -225,7 +225,11 @@ scp -r /root/local  root@192.163.0.1:/root/test          #本地拷到服务器
 
 ## 磁盘命令
 df -h
+
+#查看文件夹大小
 du --max-depth=1 -h
+du -h --max-depth=1 /home/*
+du * -sh |grep dirName
 
 
 ## .sh 问题
@@ -234,3 +238,15 @@ du --max-depth=1 -h
 https://blog.csdn.net/youzhouliu/article/details/79051516
 
 sed -i "s/\r//" a.sh来转化 或 set fileformat=unix
+
+
+## samba
+
+https://blog.csdn.net/weixin_42350212/article/details/88804834 --安装
+http://blog.sciencenet.cn/blog-3353749-1157009.html -- 有账户
+https://zhangnq.com/2987.html -- 无账户 
+systemctl status smb
+
+-- 使用phpstorm 打开项目
+https://blog.csdn.net/fsc_fantexi/article/details/72324412 -- 将共享的目录映射成本地网络驱动器。 -- 然后可以用phpstorm 打开文件目录
+
