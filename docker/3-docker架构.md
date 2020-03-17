@@ -51,7 +51,9 @@ image 只读。
     docker commit jovial_noether joker/ubuntu:vim  
         将推出的 container commit 成一个新 image 与原来的image共享一些新的层级关系。
         
-    
+## docker image
+
+docker rmi ed9c93747fe1  删除images
       
         
 ## docker container

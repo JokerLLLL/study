@@ -302,6 +302,16 @@ Push & Pull
 
                   git config --global core.quotepath false #设置显示中文文件名
 
+diff 忽略换行符：                  
+                  git config --global core.whitespace cr-at-eol        
+                    
+## 忽略linux和window产生的权限                              
+                git中可以加入忽略文件权限的配置，具体如下：
+                
+                $ git config core.filemode false  // 当前版本库
+                $ git config --global core.fileMode false // 所有版本库
+                  
+
 ~/.gitconfig 文件 git config -l
 
 比较命令diff(比较add之前的改动）

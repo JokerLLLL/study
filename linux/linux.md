@@ -28,6 +28,7 @@ setenforce 1 //开启
 SELINUX=enforcing 改为 SELINUX=disabled
 
 #查看进程
+ps auxwww|grep php
 ps aux|grep server.php        #查看进程
 pstree -ap|grep server.php    #查看进程树
 
@@ -200,6 +201,11 @@ ls -lh 查看文件大小
 
 #查看端口
 netstat -anp|grep 9000
+
+## nc 测试端口tcp链接
+nc -nvv 192.168.0.1 80 
+nc -vvv 10.88.49.51 3306
+nc -v 10.88.49.51 3306
 
 #ab压力测试
 ab -n 1000 -c 20 htts://www.baidu.coom/

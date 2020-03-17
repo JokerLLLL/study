@@ -24,6 +24,17 @@ php app/console config:dump_entities --flavor uco
 -- 环境
 ./run.sh -i docker-reg.uco.com/uco/oms:jenkins-oms-master-2847 -o chenchaoliang@app20.uco.com -f stress start
 
+use_src.py 的配置： srcDir = '/home/songjiaqi/oms'	 
+FLAVOR=prod python3.6 build/my_init.d/use_src.py	
+FLAVOR=3p python3.6 build/my_init.d/use_src.py                3p环境	
+FLAVOR=yy python3.6 build/my_init.d/use_src.py                 yy环境
+./run.sh -n koms console ops:doctrine:schema:update --env dev --force  --dump-sql  		
+./run.sh -n  koms console cache:clear --env dev
+./run.sh -i docker-reg.uco.com/uco/oms:jenkins-oms-master-3120 -d -p 10002 -q -n koms start 运行命令
+
+alias 'start_oms'='docker start oms-cv3 oms-redis oms-mq oms' //开启
+alias 'start_oms'='docker start oms oms-cv3 oms-redis oms-mq' //关闭
+
 -- 测试 unit test
 
 ./run.sh -i docker-reg.uco.com/uco/oms:jenkins-oms-master-2994 -d unittest src/Uco/OmsBundle/Tests/Service/ShunfengServiceTest.php
