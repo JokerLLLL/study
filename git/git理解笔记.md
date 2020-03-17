@@ -32,6 +32,8 @@ git checkout -- [filename]
 git commit -m 'delete file'
 提交版本库
 
+git commit 
+
 #分支
 git checkout -b develop
 新建分支develop并把head头指向develop [-b表示 branch]
@@ -292,6 +294,8 @@ Push & Pull
                   git config --global alias.psm 'push origin master'
 
                   git config --global alias.plm 'pull origin master'
+
+                  git config --global alias.last 'rev-parse HEAD'
 
    #git lg        git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 

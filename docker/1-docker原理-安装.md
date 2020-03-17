@@ -39,6 +39,8 @@ centos安装：
      
      sudo systemctl start docker
      
+     ## 安装过慢 使用国内镜像源
+     https://www.jianshu.com/p/d611047c4387
      
      -本地碰到错误
      docker: Error response from daemon: OCI runtime create failed: container_linux.go:344: starting container process caused "process_linux.go:293: copying bootstrap data to pipe caused \"write init-p: broken pipe\"": unknown.

@@ -1,3 +1,5 @@
+### 说明
+symfony 脚本命名：以Command结尾 并继承 ContainerAwareCommand
 
 ###更新数据库表 （过滤外键） 
   
@@ -36,6 +38,8 @@ alias 'start_oms'='docker start oms-cv3 oms-redis oms-mq oms' //开启
 alias 'start_oms'='docker start oms oms-cv3 oms-redis oms-mq' //关闭
 
 -- 测试 unit test
+
+-- run.sh 中 src_static_analyze 注释掉可跳过语法检查
 
 ./run.sh -i docker-reg.uco.com/uco/oms:jenkins-oms-master-2994 -d unittest src/Uco/OmsBundle/Tests/Service/ShunfengServiceTest.php
 
