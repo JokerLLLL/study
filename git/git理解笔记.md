@@ -332,3 +332,10 @@ git ls-files -v
 
 # windows 别名修改
 /etc/profile.d/aliases.sh
+
+## Git 有颜色
+
+git config --global color.diff auto
+git config --global color.status auto
+git config --global color.branch auto
+git config --global color.interactive auto

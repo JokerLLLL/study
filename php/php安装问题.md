@@ -12,4 +12,7 @@ https://www.cnblogs.com/lldsn/p/10611847.html#_label2 【完整安装教程】
 https://www.php.cn/php-weizijiaocheng-416575.html
 https://www.cnblogs.com/achengmu/p/9312019.html
 
+【yac安装】
+https://segmentfault.com/a/1190000009038958
+
 
