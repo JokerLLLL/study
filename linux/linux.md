@@ -168,7 +168,12 @@ find /home -size 25k         >25k的文件
 mount	  挂载
 fdisk  -l 查看硬盘
 echo -e   解析转移符    echo -e "\e[1;33mXXX\e[0mxxx"
+
+## 别名
 alias ls='ls --color=never' 别名
+则把别名加在/etc/profile或~/.bashrc中。  然后# source ~/.bashrc
+alias oms_start='docker start oms-redis oms-cv3 oms-mq oms'
+alias oms_stop='docker stop oms oms-redis oms-cv3 oms-mq'
 
 快捷键::
 ctrl+a  ctrl+e  ctrl+u 到前 到后 清空

@@ -55,6 +55,12 @@ UPDATE hy_brand set `logo` = CONCAT('http://obd-admin.com/brand_logo/',`logo_bp`
 
 ```
 
+## 查询不是空表的表名
+
+```sql
+select * from information_schema.tables where TABLE_SCHEMA='当前数据库' and table_rows>0;
+```
+
 # mysql  查询重复
 
 ```sql
@@ -159,3 +165,23 @@ WHERE
     ) AS a 
     )
 ```
+
+
+## mysql 的 0000-00-00 00:00:00 报错 Incorrect datetime value
+
+https://blog.csdn.net/zha_stef/article/details/83990625
+https://www.cnblogs.com/huanhang/p/7050757.html
+
+```sql
+show variables like "sql_mode"
+
+set global sql_mode="ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"; -- 源数据
+
+set global sql_mode="ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION";
+
+set global sql_mode="STRICT_TRANS_TABLES,STRICT_ALL_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER"; -- 设置后数据
+
+```
+sql好像不起做用：
+
+直接 my.cnf 设置： sql_mode=STRICT_TRANS_TABLES,STRICT_ALL_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER
