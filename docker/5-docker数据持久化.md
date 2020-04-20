@@ -15,6 +15,9 @@ docker run -d -v volume_name:/var/temp/mysql --name mysql1 -e MYSQL_ROOT_PASSWOR
 
 如果volume_name已经存在 就会使用这个数据。
 
+每次跑完unit，volume不会自己清除，自己使用命令清楚：
+docker volume prune （删除无效的volume）
+
 ### Bind Mounting
 
 docker run -it -v /var/opt/:/var/opt/ --name ubuntu2 127.0.0.1:5000/ubuntu_vim

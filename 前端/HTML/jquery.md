@@ -13,6 +13,7 @@
          
             
               // 数组的遍历
+              
              for(var i = 0, l = result.data.length; i < l; i ++){
                 // 对象的遍历
                 for(var key in resualt.data[i]) {
@@ -77,3 +78,13 @@
              $('#file').bind('fileuploadsubmit', function (e, data) {
                  data.formData = { productCode: $("#productCode").val() };  //如果需要额外添加参数可以在这里添加
              });
+             
+             
+### 搜索多选框
+            $('.single_select').chosen({
+                "allow_single_deselect": true,
+                "no_results_text": "没有相关搜索项",
+                "search_contains": true
+            });
+            
+            $("#platformId").trigger("chosen:updated");
