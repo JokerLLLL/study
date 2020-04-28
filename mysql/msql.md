@@ -123,6 +123,38 @@ group by
 
 ```
 
+##  查看所有数据库(指定)容量大小 / 查看所有数据库(指定)各表容量大小
+## https://www.cnblogs.com/daniel2021/p/10670291.html
+```sql
+SELECT
+	table_schema AS '数据库',
+	sum( table_rows ) AS '记录数',
+	sum( TRUNCATE ( data_length / 1024 / 1024, 2 ) ) AS '数据容量(MB)',
+	sum( TRUNCATE ( index_length / 1024 / 1024, 2 ) ) AS '索引容量(MB)' 
+FROM
+	information_schema.TABLES 
+GROUP BY
+	table_schema 
+ORDER BY
+	sum( data_length ) DESC,
+	sum( index_length ) DESC;
+
+
+SELECT
+	table_schema AS '数据库',
+	table_name AS '表名',
+	table_rows AS '记录数',
+	TRUNCATE ( data_length / 1024 / 1024, 2 ) AS '数据容量(MB)',
+	TRUNCATE ( index_length / 1024 / 1024, 2 ) AS '索引容量(MB)' 
+FROM
+	information_schema.TABLES 
+WHERE
+	table_schema = 'oms-test' 
+ORDER BY
+	data_length DESC,
+
+```
+
 
 #中间表
 
@@ -185,3 +217,32 @@ set global sql_mode="STRICT_TRANS_TABLES,STRICT_ALL_TABLES,ERROR_FOR_DIVISION_BY
 sql好像不起做用：
 
 直接 my.cnf 设置： sql_mode=STRICT_TRANS_TABLES,STRICT_ALL_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER
+
+
+### mysql 的OPTIMIZE optimize
+
+来看看手册中关于 OPTIMIZE 的描述：
+
+OPTIMIZE [LOCAL | NO_WRITE_TO_BINLOG] TABLE tbl_name [, tbl_name] ...
+
+如果您已经删除了表的一大部分，或者如果您已经对含有可变长度行的表（含有VARCHAR, BLOB或TEXT列的表）进行了很多更改，则应使用
+OPTIMIZE TABLE。被删除的记录被保持在链接清单中，后续的INSERT操作会重新使用旧的记录位置。您可以使用OPTIMIZE TABLE来重新
+利用未使用的空间，并整理数据文件的碎片。
+
+https://blog.csdn.net/sanbingyutuoniao123/article/details/77839053 -- optimize报错
+https://blog.csdn.net/YABIGNSHI/article/details/52297188           -- Table does not support optimize, doing recreate + analyze instead
+https://blog.csdn.net/yabingshi_tech/article/details/52274990      -- truncate table tablename;
+
+```sql
+
+SHOW INDEX FROM Config;
+
+DELETE FROM Config WHERE id < 5000;
+
+SHOW INDEX FROM Config;
+
+OPTIMIZE TABLE Config;
+
+SHOW INDEX FROM Config;
+
+```
