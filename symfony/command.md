@@ -5,6 +5,10 @@ symfony 脚本命名：以Command结尾 并继承 ContainerAwareCommand
   
 ######  php app/console ops:doctrine:schema:update --force
 
+创建entity set 和 get 
+
+php app/console doctrine:generate:entities Uco\\BeehiveBundle\\Entity\\PreBoxSpotTask
+
 ###测试环境创建 
 
 php app/console doctrine:schema:create --em wmsIncoming --env test
@@ -33,6 +37,11 @@ FLAVOR=yy python3.6 build/my_init.d/use_src.py                 yy环境
 ./run.sh -n koms console ops:doctrine:schema:update --env dev --force  --dump-sql  		
 ./run.sh -n  koms console cache:clear --env dev
 ./run.sh -i docker-reg.uco.com/uco/oms:jenkins-oms-master-3120 -d -p 10002 -q -n koms start 运行命令
+
+## busybee docker-image
+docker-reg.uco.com/uco/busybee:jenkins-busybee-master-112
+
+./run.sh -i docker-reg.uco.com/uco/busybee:jenkins-busybee-master-112 -d -p 999 -q -n bsb start 
 
 alias 'start_oms'='docker start oms-cv3 oms-redis oms-mq oms' //开启
 alias 'start_oms'='docker start oms oms-cv3 oms-redis oms-mq' //关闭
