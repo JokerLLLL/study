@@ -35,15 +35,21 @@ composer require mdmsoft/yii2-admin "2.x-dev"
 
 #依赖composer.lock文件 可以通过 composer update 进行更新
 
-
-
 # 删除composer的包
 composer remove response/name
-
-
 
 # composer基础 
 
 删除包 composer remove name/pack_name
+
+### composer --dev 会生成dev环境
+
+### Allowed memory size of bytes exhausted
+php.ini 设置：
+memory_limit = -1 //不设内存限制 
+https://www.cnblogs.com/yehuisir/p/10434308.html
+-- TODO 调查： composer 和 php composer.phar 的区别
+https://www.jianshu.com/p/796eff32046c
+
 
 
