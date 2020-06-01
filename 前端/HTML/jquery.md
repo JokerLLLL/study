@@ -88,3 +88,29 @@
             });
             
             $("#platformId").trigger("chosen:updated");
+            
+            
+ ### 上传文件
+    // 必须文档加载完成
+   $(function(){
+      $('#inputImport').change(function(){
+         var formData = new FormData();
+         formData.append("excel", $("#inputImport")[0].files[0]);
+         formData.append("id", {{ VipPickOrder.id }});
+         $("#inputImport").val('');
+         $.ajax({
+             url: "{{path('vip_import')}}",
+             type: 'POST',
+             data: formData,
+             cache: false,
+             processData : false,
+             contentType : false,
+             success: function(data) {}
+          })
+       }
+   });
+   // Html
+   <label for="inputImport" class="btn btn-info">导入供货信息</label>
+   <input style="display:none" type="file" name="inputImport" id="inputImport">
+   
+  
