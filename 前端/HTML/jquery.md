@@ -113,4 +113,63 @@
    <label for="inputImport" class="btn btn-info">导入供货信息</label>
    <input style="display:none" type="file" name="inputImport" id="inputImport">
    
+   
+ ## 前段限制单次提交
+ 
+     function beforeSubmit() {
+         $("#btnDeleted").attr("disabled", true);
+         $("#btnSave").attr("disabled", true);
+         $("body").LoadingOverlay("show", {text : "已提交,正在删除..."});
+     }
+     function errorSubmit() {
+         $("#btnDeleted").attr("disabled", false);
+         $("#btnSave").attr("disabled", false);
+         $("body").LoadingOverlay("hide", {text : ""});
+     }
+
+## jquery 获取同级目录信息
+
+```html
+
+<tr>
+    <td><input type="text" title="test2"></td>
+    <td><input type="text" class="test1"></td>
+</tr>
+
+            var total = $(this).parent().siblings('.quantity').text();
+            var main = $(this).parent().parent().find("input[class='mainInput']").val();
+```
+
+
+```js
+var trList = $("#history_income_list").children("tr")
+    for (var i=0;i<trList.length;i++) {
+        var tdArr = trList.eq(i).find("td");
+        var history_income_type = tdArr.eq(0).find('input').val();//收入类别
+        var history_income_money = tdArr.eq(1).find('input').val();//收入金额
+        var history_income_remark = tdArr.eq(2).find('input').val();//    备注
+        
+        alert(history_income_type);
+        alert(history_income_money);
+        alert(history_income_remark);
+    }
+复制代码
+方法二：
+
+复制代码
+$("#history_income_list").find("tr").each(function(){
+        var tdArr = $(this).children();
+        var history_income_type = tdArr.eq(0).find('input').val();//收入类别
+        var history_income_money = tdArr.eq(1).find('input').val();//收入金额
+        var history_income_remark = tdArr.eq(2).find('input').val();//    备注
+        
+        alert(history_income_type);
+        alert(history_income_money);
+        alert(history_income_remark);
+        
+        
+    });
+
+```
+
   
