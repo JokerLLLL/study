@@ -114,12 +114,16 @@
    <input style="display:none" type="file" name="inputImport" id="inputImport">
    
    
+   // file 表单
+               $('input[type=file]').bootstrapFileInput();
+   
+   
  ## 前段限制单次提交
  
      function beforeSubmit() {
          $("#btnDeleted").attr("disabled", true);
          $("#btnSave").attr("disabled", true);
-         $("body").LoadingOverlay("show", {text : "已提交,正在删除..."});
+         $("body").LoadingOverlay("show", {text : "已提交,正在删除...", css:{font-size:"5px"}, size:7});
      }
      function errorSubmit() {
          $("#btnDeleted").attr("disabled", false);
@@ -171,5 +175,15 @@ $("#history_income_list").find("tr").each(function(){
     });
 
 ```
+
+
+## 获取 data-* 方式
+
+<input data-type="type1" data-brand="brand1">
+
+jquery:
+var type = $(this).data("type"); // type1
+var data = $(this).data(); // {type:type1,brand:brand1}
+
 
   

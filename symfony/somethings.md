@@ -15,5 +15,8 @@ foreach ($session->getFlashBag()->get('notice', []) as $message) {
     echo '<div class="flash-notice">'.$message.'</div>';
 }
 
+ {% for flashMessage in app.session.flashBag.get('notice') %}
+ 
+
 https://symfony.com/doc/current/components/http_foundation/sessions.html#flash-messages
 http://www.symfonychina.com/doc/current/session/avoid_session_start.html
