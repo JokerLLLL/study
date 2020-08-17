@@ -5,7 +5,7 @@
 
 没有深度导致重复读取。
 
-## flushMessage （一次性消息）
+## flashMessage （一次性消息）
 
 // set flash messages
 $session->getFlashBag()->add('notice', 'Profile updated');
