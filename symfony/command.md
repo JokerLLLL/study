@@ -54,6 +54,16 @@ alias 'start_oms'='docker start oms oms-cv3 oms-redis oms-mq' //关闭
 
 ./run.sh -i docker-reg.uco.com/uco/oms:jenkins-oms-master-3120 -d unittest --filter testConfirmCancelShipmentWithPendingReverseNotMerge 
 
+## 线上环境 开启/关闭 
+
+./run.sh -i docker-reg.uco.com/uco/oms:jenkins-oms-user3-365 -o chenchaoliang@app13.uco.com -R ccl-test@dby1.uco.com:4006,asdaASD@#323,uco -f elc
+
+./run.sh -i docker-reg.uco.com/uco/oms:jenkins-oms-user3-365 -o chenchaoliang@app13.uco.com -R ccl-test@dby1.uco.com:4006,asdaASD@#323,uco -n app13-oms-elc-2v19hh stop
+
+## 共享说明
+
+/mnt/oms-3p-share/ 所有app和对应的docker的目录共享
+/mnt/oms-3p/ 本机app和本机docker共享的目录。
 
 # 缓存清理
 php bin/console cache:clear --env=prod --no-debug

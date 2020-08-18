@@ -50,5 +50,11 @@
     如果两个都是一起new 的 就要相互persist
     如果主的已经flush,子一定要set主的包含id的关系否知无效。
     
+## symfony 
+
+$em->beginTrancation();
+$em->flush(); // 必须flush 否则无效
+$em->commit();
+    
     
 

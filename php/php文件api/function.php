@@ -6,6 +6,15 @@
  * Time: 22:33
  */
 
+// 重置文件夹 （系统函数）
+$f = function($path){
+    if(empty($path))
+        throw new OmsException('path not exist: ' . $path);
+    $cmd = 'rm -rf ' . $path;
+    shell_exec($cmd);
+    mkdir($path, 0777, true);
+};
+
 /**
  * 递归读取文件
  * @param $path
