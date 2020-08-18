@@ -1,0 +1,4 @@
+greplog1:sss.txt:dafadf
+greplog3:greplog1:sss.txt:dafadf
+greplog3:sss.txt:dafadf
+sss.txt:dafadf

@@ -70,7 +70,7 @@
                          alert(result.errMsg);
                      }else{
                          $('<img src="' + result.data.url + '" >').appendTo('#imageShow');
-                     }
+                       }
                  }
              });
  
