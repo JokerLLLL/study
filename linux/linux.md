@@ -1,4 +1,12 @@
-﻿tail -f /tmp/date.txt  #实时更新
+﻿## 文件读取
+https://blog.csdn.net/qq_41718455/article/details/86160734
+wc -l filename 统计几行
+【一】从第3000行开始，显示1000行。即显示3000~3999行
+cat filename | tail -n +3000 | head -n 1000
+【二】显示1000行到3000行
+cat filename| head -n 3000 | tail -n +1000 
+
+tail -f /tmp/date.txt  #实时更新
 tail -3 /tmp/date.txt  #最后三行
 tail -n 10 xxx          最后10行
 date +%w               #返回星期几
