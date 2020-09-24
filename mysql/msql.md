@@ -251,3 +251,7 @@ SHOW INDEX FROM Config;
 
 https://books.google.co.jp/books?id=s8PUDwAAQBAJ&pg=PT233&lpg=PT233&dq=mysql+%E4%BA%8B%E5%8A%A1%2Brename+table&source=bl&ots=p5-TycX_Ia&sig=ACfU3U2FUGMCKxOOxIDlMMNBtj2hI5jRYw&hl=zh-CN&sa=X&ved=2ahUKEwiS8Zeo66_pAhUOa94KHZl2B1YQ6AEwCXoECAoQAQ#v=onepage&q=mysql%20%E4%BA%8B%E5%8A%A1%2Brename%20table&f=false
 
+
+### mysql 更新查询
+
+UPDATE PrepackPlatform Left JOIN Product ON Product.id = PrepackPlatform.productId SET isEnable = 0 WHERE  Product.productCode in ('');
