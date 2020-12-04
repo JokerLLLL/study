@@ -261,3 +261,7 @@ UPDATE PrepackPlatform Left JOIN Product ON Product.id = PrepackPlatform.product
 ## mysql实现乐观锁
 
 https://www.cnblogs.com/richerdyoung/p/6427668.html
+
+
+## 查卡主的sql
+show full processlist

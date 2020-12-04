@@ -89,3 +89,11 @@ php -l test.php  检查语法错误
 yum search php | grep -i soap
 
 
+### json_encode 不转义 /
+```php
+<?php
+//不转义 /
+json_encode(['xx'=>'\\\\//','ee' => '中国'], JSON_UNESCAPED_SLASHES);
+//不转义unicode
+json_encode(['xx'=>'\\\\//','ee' => '中国'], JSON_UNESCAPED_UNICODE);
+```

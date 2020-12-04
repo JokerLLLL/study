@@ -93,3 +93,21 @@ php bin/console generate:bundle --namespace=Acme/TestBundle
 -- 测试命令
 http://www.symfonychina.com/doc/current/console.html
 
+
+### 获取web配置信息
+
+./deployment.py -f 3p
+
+```text
+* 表示web
+(Cmd) 
+#  Prod Stag IP              Version                   #  Name                 web    ssh    
+1            10.2.0.73       v-jenkins-oms-master-3527 1  app15-oms-3p-c6vt9a  :54385 :51192 
+2            10.2.0.74       v-jenkins-oms-master-3527 2  app17-oms-3p-ssfmea  :55520 :65115 
+3            10.2.1.74       v-jenkins-oms-master-3527 3  app18-oms-3p-mawpll  :58010 :54365 
+4  *         10.2.0.73       v-jenkins-oms-master-3528 4  app15-oms-3p-io8ske  :54847 :57713 
+5            10.2.0.74       v-jenkins-oms-master-3528 5  app17-oms-3p-l43jfi  :49889 :52681 
+6  *         10.2.1.74       v-jenkins-oms-master-3528 6  app18-oms-3p-jeet1m  :60049 :50170
+```
+
+

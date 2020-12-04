@@ -348,3 +348,8 @@ git bisect start HEAD develop_18252
 git bisect good
 git bisect bad
 git bisect reset
+
+## git 分支名搜索
+git branch --all | grep  23733
+git branch -a | grep selector
+git branch -r | grep selector 
