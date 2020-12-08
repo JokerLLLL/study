@@ -353,3 +353,6 @@ git bisect reset
 git branch --all | grep  23733
 git branch -a | grep selector
 git branch -r | grep selector 
+
+### submodule
+git submodule(consul-kit) update latest
