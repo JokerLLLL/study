@@ -204,6 +204,15 @@ find / -name joker*          查找文件
 find /home -mtime +10        10天前修改的文件
 find /home -size 25k         >25k的文件
 
+## cp命令
+
+假设复制源目录 为 dir1 ,目标目录为dir2。怎样才能将dir1下所有文件复制到dir2下了
+如果dir2目录不存在，则可以直接使用
+cp -r dir1 dir2
+即可。
+如果dir2目录已存在，则需要使用
+cp -r dir1/. dir2
+
 mount	  挂载
 fdisk  -l 查看硬盘
 echo -e   解析转移符    echo -e "\e[1;33mXXX\e[0mxxx"

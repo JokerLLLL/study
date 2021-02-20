@@ -39,6 +39,10 @@ FLAVOR=yy python3.6 build/my_init.d/use_src.py                 yy环境
 ./run.sh -i docker-reg.uco.com/uco/oms:jenkins-oms-master-3120 -d -p 10002 -q -n koms start 运行命令
 
 
+## 自动生成get、set方法
+
+dump-entity  Uco\\OmsBundle\\Entity\\PlatformTransfer
+
 ## 进入container、执行命令
 ./run.sh -n  kikioms shell
 ./run.sh -n  kikioms console wms:shipment:download 950

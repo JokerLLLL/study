@@ -1,6 +1,6 @@
 <?php
 
-var_dump(strpos('aaa', 'aaaxxaaxx')); // 没有返回false 有返回 位置 可能返回0
+var_dump(strpos('aaaxxx', 'aaa')); // 没有返回false 有返回 位置 可能返回0
 var_dump(preg_match('/aaa/', 'aaxaxxaaxacvvaaxa')); // 返回匹配到的个数 0 或 1
 $email = "/^[A-z]@[]\.[A-z]$/";
 
