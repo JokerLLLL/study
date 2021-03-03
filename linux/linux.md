@@ -1,4 +1,8 @@
-﻿## 文件读取
+﻿## ls
+-h 
+
+
+## 文件读取
 https://blog.csdn.net/qq_41718455/article/details/86160734
 wc -l filename 统计几行
 【一】从第3000行开始，显示1000行。即显示3000~3999行
@@ -79,6 +83,33 @@ netstat -luntp|grep 80   #查看监听端口
 #tar命令 [x,c指令必须放到开头]
 tar -xzvf file.tar.gz              -C  /tmp/ #指定解压目录      -c打包 -x解包 -v显示过程 -f指定打包后名
 tar -xjvf file.tar.bz2
+
+
+## gzip 命令
+
+Usage: gzip [OPTION]... [FILE]...
+Compress or uncompress FILEs (by default, compress FILES in-place).
+
+Mandatory arguments to long options are mandatory for short options too.
+  -c, --stdout      write on standard output, keep original files unchanged（压缩保存源文件）
+  -d, --decompress  decompress （解压）
+  -f, --force       force overwrite of output file and compress links
+  -h, --help        give this help
+  -k, --keep        keep (don't delete) input files （解压保持源文件）
+  -l, --list        list compressed file contents
+  -L, --license     display software license
+  -n, --no-name     do not save or restore the original name and timestamp
+  -N, --name        save or restore the original name and timestamp
+  -q, --quiet       suppress all warnings
+  -r, --recursive   operate recursively on directories
+      --rsyncable   make rsync-friendly archive
+  -S, --suffix=SUF  use suffix SUF on compressed files
+      --synchronous synchronous output (safer if system crashes, but slower)
+  -t, --test        test compressed file integrity
+  -v, --verbose     verbose mode
+  -V, --version     display version number
+  -1, --fast        compress faster
+  -9, --best        compress better
 
 #zip
 unzip xxx.zip 解压
@@ -172,6 +203,15 @@ echo $PATH					 环境变量
 find / -name joker*          查找文件
 find /home -mtime +10        10天前修改的文件
 find /home -size 25k         >25k的文件
+
+## cp命令
+
+假设复制源目录 为 dir1 ,目标目录为dir2。怎样才能将dir1下所有文件复制到dir2下了
+如果dir2目录不存在，则可以直接使用
+cp -r dir1 dir2
+即可。
+如果dir2目录已存在，则需要使用
+cp -r dir1/. dir2
 
 mount	  挂载
 fdisk  -l 查看硬盘

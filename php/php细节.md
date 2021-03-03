@@ -72,7 +72,7 @@ https://blog.csdn.net/tingliting/article/details/49615135
 
 $a ?? 0 等同于 isset($a) ? $a : 0。
 
-$a ?: 0 等同于 $a ? $a : 0。
+$a ?: 0 等同于 bool($a) ? $a : 0。
 
 empty: 判断一个变量是否为空(null、false、00、0、'0'、』这类，都会返回true)。
 
@@ -89,3 +89,11 @@ php -l test.php  检查语法错误
 yum search php | grep -i soap
 
 
+### json_encode 不转义 /
+```php
+<?php
+//不转义 /
+json_encode(['xx'=>'\\\\//','ee' => '中国'], JSON_UNESCAPED_SLASHES);
+//不转义unicode
+json_encode(['xx'=>'\\\\//','ee' => '中国'], JSON_UNESCAPED_UNICODE);
+```

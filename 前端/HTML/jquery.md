@@ -186,4 +186,34 @@ var type = $(this).data("type"); // type1
 var data = $(this).data(); // {type:type1,brand:brand1}
 
 
-  
+## 行内元素的值
+
+<p style="display:inline-block;width: 80%%;vertical-align:middle;">%s</p>
+<p class="eye" style="display: inline-block;vertical-align:middle;" data-content="%s">👁️</p>', $string, $disCover);
+
+## 判断前一个元素是input
+$(this).prev()[0].tagName == 'INPUT';
+
+
+## jquery给.val()赋值要给angular改变model
+
+【Angular中修改input的值后如何更新页面ng-model的值】
+https://blog.csdn.net/weixin_39950595/article/details/84839834 
+input.val(originalVal);
+input.trigger('input');
+input.trigger('change');
+
+js的垃圾换行：https://blog.csdn.net/weixin_41287260/article/details/84146306
+
+
+### jquery 获取.val()的值依赖angular的时候
+
+ $(this).prev().val() 的值是angular赋值的所以该js要在angular加载完毕之后再加载
+ 
+ 
+ ## js获取url的值
+ window.location.search.substr(1) 获取url的第一个token
+ https://www.jianshu.com/p/f988e4ebd627
+ 
+ js 写法：
+ return(false);

@@ -339,3 +339,20 @@ git config --global color.diff auto
 git config --global color.status auto
 git config --global color.branch auto
 git config --global color.interactive auto
+
+
+# git bisect 二分法查错
+
+http://www.ruanyifeng.com/blog/2018/12/git-bisect.html
+git bisect start HEAD develop_18252
+git bisect good
+git bisect bad
+git bisect reset
+
+## git 分支名搜索
+git branch --all | grep  23733
+git branch -a | grep selector
+git branch -r | grep selector 
+
+### submodule
+git submodule(consul-kit) update latest

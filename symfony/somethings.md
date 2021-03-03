@@ -20,3 +20,10 @@ foreach ($session->getFlashBag()->get('notice', []) as $message) {
 
 https://symfony.com/doc/current/components/http_foundation/sessions.html#flash-messages
 http://www.symfonychina.com/doc/current/session/avoid_session_start.html
+
+## unit test stock 问题
+
+ // 跑 StockQueue
+$this->stockQueueService->processQueueStockForTest();
+$this->entityManager->flush();
+$this->entityManager->clear(); // 一定要clear 否则后面去获取的库存会有问题，没有刷新
