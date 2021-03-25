@@ -24,3 +24,25 @@ do
 done < httptest.log
 
 echo "min:{$min} max:{$max}"
+
+
+
+STRING="hello,[sunny]! "
+
+#extract substring 'sunny'
+echo $STRING
+SUBSTR=`expr "$STRING" : '.*\[\(.*\)\]'`
+echo $SUBSTR
+SUBSTR=$(expr "$STRING" : '.*\[\(.*\)\]')
+echo $SUBSTR
+
+SUBSTR=`echo "$STRING" | sed -n 's/.*\[\(.*\)\].*/\1/p'`
+echo $SUBSTR
+
+
+string="hello,shell,haha"
+array=(${string//,/ })
+for var in ${array[@]}
+do
+          echo $var
+done
