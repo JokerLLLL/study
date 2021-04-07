@@ -265,3 +265,63 @@ https://www.cnblogs.com/richerdyoung/p/6427668.html
 
 ## 查卡主的sql
 show full processlist
+
+## Mysql中length()、char_length()的区别。
+
+a）、length()： 单位是字节，utf8编码下,一个汉字三个字节，一个数字或字母一个字节。gbk编码下,一个汉字两个字节，一个数字或字母一个字节。
+b）、char_length()：单位为字符，不管汉字还是数字或者是字母都算是一个字符。
+
+## like unicode sql
+
+select * FROM ApiAction WHERE id > 678246 and id < 778246 and  `data` like  '%_u975e_u5e38_u62b1_u6b49_u56de%';
+
+
+### v8.0 客户端链接报错
+
+
+报错信息：
+```
+'caching_sha2_password' cannot be loaded
+```
+
+https://www.jianshu.com/p/939eb5157e83
+
+mysql -u root -p
+
+use mysql;
+select user,plugin from user where user='root';
+alter user 'root'@'localhost' identified with mysql_native_password by 'password';
+alter user 'root'@'%' identified with mysql_native_password by 'password';
+（发现两个 root账号。）
+
+ -- 立即生效
+flush privileges; 
+
+
+##  由mysql的 datetime 类型字段默认设置为了'0000-00-00' 引发的血案
+
+https://my.oschina.net/u/2457218/blog/639886
+
+select @@sql_mode;
+
+SET GLOBAL sql_mode = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
+
+去除 ERROR_FOR_DIVISION_BY_ZERO,NO_ZERO_DATE,NO_ZERO_IN_DATE; 的设置
+
+```
+select @@sql_mode;
+SET GLOBAL sql_mode = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION';
+flush privileges; -- 立即生效??
+```
+
+mysql ONLY_FULL_GROUP_BY 配置报错
+```
+报错：
+
+
+```
+https://blog.csdn.net/yalishadaa/article/details/72861737
+
+STRICT_TRANS_TABLES 严格模式
+过长自动截断
+not null 设置默认值

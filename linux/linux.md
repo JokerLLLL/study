@@ -249,6 +249,13 @@ grep -rn "test"  file1 file2 file3..
 grep -l "text" file1 file2 file3..
 grep -lZ "test" *|xargs -0 rm 删除含test的文件
 
+标准unix/linux下的grep通过下面參数控制上下文
+
+grep -C 5 foo file 显示file文件里匹配foo字串那行以及上下5行
+grep -B 5 foo file 显示foo及前5行
+grep -A 5 foo file 显示foo及后5行
+-v 取反 
+
 
 ls -lh 查看文件大小
 
@@ -280,6 +287,7 @@ get filename
 put filename  /root/
 scp -r root@192.163.0.1:/root/to_copy /root/after_copy/  #从服务器靠过来
 scp -r /root/local  root@192.163.0.1:/root/test          #本地拷到服务器
+scp chenchaoliang@app17.uco.com:~/so.log so_3p.log
 
 
 ## 磁盘命令

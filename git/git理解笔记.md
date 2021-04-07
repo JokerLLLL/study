@@ -356,3 +356,20 @@ git branch -r | grep selector
 
 ### submodule
 git submodule(consul-kit) update latest
+
+
+## 方案解决
+
+merge 出问题。
+```text
+$ git rebase develop_27553
+First, rewinding head to replay your work on top of it...
+Applying: [#27585]敏微Pday回退方案
+Applying: [#27645]加密解密版本上线
+Using index info to reconstruct a base tree...
+M       app/config/parameters.ini
+Falling back to patching base and 3-way merge...
+No changes -- Patch already applied.
+Applying: [27585]还原成dummy版本
+Applying: [#27585]回退版本去掉dummy版本校验
+```
