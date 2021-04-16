@@ -115,4 +115,8 @@ http://www.symfonychina.com/doc/current/console.html
 6  *         10.2.1.74       v-jenkins-oms-master-3528 6  app18-oms-3p-jeet1m  :60049 :50170
 ```
 
+### 脚步多次执行
+
+for (( i=0 ;i<=10000 ;i++));do /usr/bin/php /app/ops/app/console ops:create_salesorder_for_download 720 100202 'GIV70103,10;GIV70102,5' 50 ;done
+
 
