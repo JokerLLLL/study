@@ -75,7 +75,7 @@ $xml = new SimpleXmlElement('
 </xml>');
 
 
-var_dump($xml->OrderAddedServices->OrderAddedService);  // 等于 $xml->OrderAddedServices->OrderAddedService[0]
+var_dump($xml->OrderAddedServices->OrderAddedService);      // 等于 $xml->OrderAddedServices->OrderAddedService[0]
 var_dump($xml->OrderAddedServices->OrderAddedService[1]);
 
 

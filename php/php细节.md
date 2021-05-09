@@ -63,6 +63,28 @@ $example = empty($a) ??'test';
 ## php引用的坑
 http://php.net/manual/en/function.unset.php
 https://blog.csdn.net/tingliting/article/details/49615135
+https://www.php.net/manual/zh/control-structures.foreach.php  
+```
+$arr = array(1, 2, 3, 4);
+foreach ($arr as &$value) {
+    $value = $value * 2;
+}
+var_dump($arr);
+// 现在 $arr 是 array(2, 4, 6, 8)
+
+// 未使用 unset($value) 时，$value 仍然引用到最后一项 $arr[3]
+
+foreach ($arr as $key => $value) {
+    // $arr[3] 会被 $arr 的每一项值更新掉…
+    echo "{$key} => {$value} ";
+    print_r($arr);
+}
+
+$value = 'xx';
+var_dump($arr);
+unset($value);
+var_dump($arr);
+```
 
 引用传值 unset销毁标识符 不能销毁原值 unset只是断开 标识符和指向的内容，引用 刚好是断开前标识符和变量的
 

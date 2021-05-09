@@ -325,3 +325,10 @@ https://blog.csdn.net/yalishadaa/article/details/72861737
 STRICT_TRANS_TABLES 严格模式
 过长自动截断
 not null 设置默认值
+
+### 修改密码
+
+```sql
+set password for chenchaoliang@localhost = password('vUg1zK_X33o47QiW3INwFwpcZcFiR3Ha111'); 
+ALTER USER USER() IDENTIFIED BY 'vUg1zK_X33o47QiW3INwFwpcZcFiR3Ha';
+```
