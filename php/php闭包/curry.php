@@ -32,5 +32,6 @@ function curry( $fn )
 $fn = curry( 'add', 5 );  //fn = function(){ call_func('add',[5] + func_get_args()}  + 3
 
 var_dump( $fn( 3 )); // = 8
+var_dump( $fn( 1 )); // = 8
 
 $fn2 = curry( 'add', 10 );
