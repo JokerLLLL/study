@@ -289,6 +289,8 @@ scp -r root@192.163.0.1:/root/to_copy /root/after_copy/  #从服务器靠过来
 scp -r /root/local  root@192.163.0.1:/root/test          #本地拷到服务器
 scp chenchaoliang@app17.uco.com:~/so.log so_3p.log
 
+## sz rz 上传下载服务器（xshell使用）
+https://www.cnblogs.com/tangxuliang/p/9151971.html
 
 ## 磁盘命令
 df -h

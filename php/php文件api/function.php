@@ -174,3 +174,36 @@ function delTargetLine($filePath, $target) {
     }
 }
 
+##文件暂存内存 后续flush到db
+function flushMemoryToHD()
+{
+    $dataList = [];
+    $dataList[] = [
+        'a' => 'test',
+        'b' => 'test2',
+        'c' => 'test3',
+        'd' => 'test4',
+    ];
+    $dataList[] = [
+        'a' => 'xxx',
+        'b' => 'xxx',
+        'c' => 'xxx',
+        'd' => 'xxx',
+    ];
+    $memoryLimit = 5 * 1024 * 1024; //以字节为单位、保留在内存的最大数据量，超过则使用临时文件。
+    $fp          = fopen("php://temp/maxmemory:$memoryLimit", 'r+');
+    if (false === $fp) {
+        throw new Exception(sprintf('[%s] fopen php://temp failed', __METHOD__));
+    }
+    fputcsv($fp, array_keys($dataList[0])); //写入文件列名
+    foreach ($dataList as $fields) {
+        fputcsv($fp, $fields);
+    }
+    rewind($fp);
+    $content = stream_get_contents($fp);
+    fclose($fp);
+    var_dump($content);
+    file_put_contents('./q.scv', $content);
+
+}
+
