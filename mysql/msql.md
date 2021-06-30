@@ -317,7 +317,7 @@ flush privileges; -- 立即生效??
 mysql ONLY_FULL_GROUP_BY 配置报错
 ```
 报错：
-
+SET GLOBAL sql_mode = 'NO_ENGINE_SUBSTITUTION';
 
 ```
 https://blog.csdn.net/yalishadaa/article/details/72861737
@@ -331,4 +331,10 @@ not null 设置默认值
 ```sql
 set password for chenchaoliang@localhost = password('vUg1zK_X33o47QiW3INwFwpcZcFiR3Ha111'); 
 ALTER USER USER() IDENTIFIED BY 'vUg1zK_X33o47QiW3INwFwpcZcFiR3Ha';
+```
+
+### 前置类型转换造成的数据发现查的sql不对
+```sql
+-- find出来的数据是 id = 546 的数据 
+select  * from  ReturnFacotryOrder where  id = '546-1'; 
 ```
