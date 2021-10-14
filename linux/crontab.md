@@ -42,3 +42,28 @@ tail -f /var/log/cron        #执行过的定时任务 (日志信息)
 */1 * * * * date >> /tmp/date.conf && sleep 30s && date >> /tmp/date.conf
 #每分钟任务
 */1 * * * * /usr/local/php  /data/wwwroot/default/hezi/advanced/yii clear/index >> /tmp/yii.log
+
+
+
+### 注意事项
+
+删除crontab文件
+
+$crontab -r
+
+千万别乱运行crontab -r。它从Crontab目录（/var/spool/cron）中删除用户的Crontab文件。删除了该用户的所有crontab都没了。
+
+
+新创建的cron job，不会马上执行，至少要过2分钟才执行。如果重启cron则马上执行。
+
+
+当crontab失效时，可以尝试/etc/init.d/crond restart解决问题。或者查看日志看某个job有没有执行/报错tail -f /var/log/cron。
+
+
+### ubuntu下启动、停止与重启cron:
+
+$sudo /etc/init.d/cron start
+
+$sudo /etc/init.d/cron stop
+
+$sudo /etc/init.d/cron restart

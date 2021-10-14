@@ -207,6 +207,8 @@ https://www.cnblogs.com/huanhang/p/7050757.html
 ```sql
 show variables like "sql_mode"
 
+set global sql_mode=""; // all us
+
 set global sql_mode="ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"; -- 源数据
 
 set global sql_mode="ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION";
@@ -287,6 +289,8 @@ select * FROM ApiAction WHERE id > 678246 and id < 778246 and  `data` like  '%_u
 https://www.jianshu.com/p/939eb5157e83
 
 mysql -u root -p
+
+mysql -h 127.0.0.1 -u root -p -P 3306
 
 use mysql;
 select user,plugin from user where user='root';

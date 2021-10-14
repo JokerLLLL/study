@@ -188,7 +188,10 @@ find / -name nginx*                   #匹配所有nginx的目录以及文件
     /xx       查找xx  按n查找下一处
     ?xx       反向xx  查找上一出
 编辑模式：
-  
+
+## vim 批量替换 
+
+https://www.cnblogs.com/beenoisy/p/4046074.html  
   
  #软链接
  ln -s /a  /b
