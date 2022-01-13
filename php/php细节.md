@@ -119,3 +119,15 @@ json_encode(['xx'=>'\\\\//','ee' => '中国'], JSON_UNESCAPED_SLASHES);
 //不转义unicode
 json_encode(['xx'=>'\\\\//','ee' => '中国'], JSON_UNESCAPED_UNICODE);
 ```
+
+## nowDoc hereDoc
+
+```
+$nowDoc =  <<<'now'
+$var
+now;
+
+$hereDoc = <<<here
+$var
+here;
+```
