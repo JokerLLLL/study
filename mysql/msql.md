@@ -155,6 +155,48 @@ ORDER BY
 
 ```
 
+## 查库大小
+select 
+table_schema as '数据库',
+sum(table_rows) as '记录数',
+sum(truncate(data_length/1024/1024, 2)) as '数据容量(MB)',
+sum(truncate(index_length/1024/1024, 2)) as '索引容量(MB)'
+from information_schema.tables
+group by table_schema
+order by sum(data_length) desc, sum(index_length) desc;
+
+## 查表大小
+select 
+table_schema as '数据库',
+table_name as '表名',
+table_rows as '记录数',
+truncate(data_length/1024/1024, 2) as '数据容量(MB)',
+truncate(index_length/1024/1024, 2) as '索引容量(MB)'
+from information_schema.tables 
+where table_schema='oms_elc'
+order by data_length desc, index_length desc;
+
+-- 更新分析(information_schema有缓存)
+ANALYZE TABLE Message,Intercept;
+
+-- 命令分析
+
+```
+Use 
+
+mysqlcheck -Aa -uroot -p 
+
+to run analyze table for all databases and tables (including InnoDB) on a running server. Available in MySQL 3.23.38 and later.
+
+mysqlcheck命令参数说明：
+
+-A, --all-databases Check all the databases. This will be same as
+                    --databases with all databases selected.
+-a, --analyze       Analyze given tables.
+
+```
+
+
 
 #中间表
 
@@ -342,3 +384,121 @@ ALTER USER USER() IDENTIFIED BY 'vUg1zK_X33o47QiW3INwFwpcZcFiR3Ha';
 -- find出来的数据是 id = 546 的数据 
 select  * from  ReturnFacotryOrder where  id = '546-1'; 
 ```
+
+### GROUP函数group_concat
+
+```sql
+SELECT
+	so.STATUS,
+	count( * ),
+	group_concat( so.id ),
+	group_concat( sh.id ) 
+FROM
+	SalesOrder so
+	JOIN Shipment sh ON so.id = sh.SalesOrderId 
+	AND sh.STATUS <> 3
+	LEFT JOIN ShipmentExternal se ON se.shipmentId = sh.id 
+WHERE
+	so.STATUS IN ( 6 ) 
+	AND so.paymentTime > '2021-11-01' 
+	AND so.warehouse = 10960 
+	AND se.expectedProcessDispatchTime IS NULL 
+GROUP BY
+	so.STATUS;
+```
+
+### not empty
+
+```sql
+select * from QueueBetter where not isProcessed;
+```
+
+
+### CASE END用法
+
+```sql
+select 
+s.id, 
+s.salesOrderId,
+s.`status`,
+s.advanceOrderId,
+case s.status when 1 then '已发货' when 2 then '配货中' when 3 then '已取消' else '' end,
+s.advanceStatus,
+ case s.advanceStatus 
+   when 3 then '已取消' 
+   when 5 then '已下载' 
+   when 7 then '等待通知发货' 
+   when 8 then '已通知发货' 
+   when 9 then '已发货' 
+   else '非前置' 
+ end
+from Shipment s where s.id in (1,2,2,3);
+
+```
+
+
+```sql
+SELECT
+	count( s.id ),
+CASE
+   
+	WHEN `status` = 1 THEN
+	'状态1' 
+	WHEN `status` = 2 THEN
+	'状态2' 
+END `statusName`, 
+	s.`status` 
+FROM
+	Shipment s 
+WHERE
+	s.id IN ( "1422930835", "1422900715", "1422889060", "1422864991" ) 
+GROUP BY
+	s.`status`;
+	
+	------------
+	
+SELECT
+	count( s.id ),
+	    '表达式1' = 
+CASE
+	WHEN `status` = 1 THEN
+	'状态1' 
+	WHEN `status` = 2 THEN
+	'状态2' 
+END `statusName`, 
+	s.`status` 
+FROM
+	Shipment s 
+WHERE
+	s.id IN ( "1422930835", "1422900715", "1422889060", "1422864991" ) 
+GROUP BY
+	s.`status`
+	
+	
+	
+```
+
+## 锁表
+```sql
+lock tables ChanelInventory write;
+select * from ChanelInventory limit 10;
+insert into ChanelInventory(id,scheduleTime) VALUES(null,'2021') ;
+unlock tables;
+```
+
+### 8.0 更新json
+```sql
+
+update MockOrder set body = json_replace(body,'$.getCiphertextRecipientMobile', 'aaa','$.getCiphertextRecipientName', 'bbb', '$.getCiphertextAddress', 'ddd') where id = 1;
+```
+
+## 设置当前可重复读
+```sql
+SET session transaction isolation level REPEATABLE READ;
+```
+
+
+### mysql的upsert的实现
+https://www.jianshu.com/p/b9b7f2b5db24
+`ON DUPLICATE KEY UPDATE`
+https://www.cnblogs.com/innocenter/p/12869158.html

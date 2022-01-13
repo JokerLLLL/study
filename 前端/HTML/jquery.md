@@ -24,7 +24,7 @@
              for(var key in jsonObj) {
                 console.log(key + '=>' + jsonObj[key]);
              }
-             for(var i = 0; i < jsonArr.lenght; i ++) {
+             for(var i = 0; i < jsonArr.length; i ++) {
                 console.log(i + '=>' + jsonArr[i];
              }
              
@@ -40,7 +40,15 @@
                              
         // parseFloat  字符串 转 数字
         
-        
+ ## 浏览器同域名并发
+ 
+ 并发的一些知识点：
+ 
+ 客户端对同一个主机域名的并发连接数量是有限的，当连接数量超过限制时，会导致其余请求就会被阻塞，另外脚本下载和运行也会被阻塞。
+ 
+ 下面是浏览器并发连接数量表：来源（http://www.stevesouders.com/blog/2008/03/20/roundup-on-parallel-connections/）   
+ 
+ --- symfony提供的服务器是单进程的 草---
         
  ## ajax文件上传
  

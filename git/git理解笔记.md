@@ -357,6 +357,7 @@ git branch -r | grep selector
 ### submodule
 git submodule(consul-kit) update latest
 
+https://www.jianshu.com/p/e27a978ddb88
 
 ## 方案解决
 

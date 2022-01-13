@@ -120,5 +120,12 @@ PS:下面看下正则表达式 \w \s \d \b
 $ 匹配字符串的结束
 
 ### 匹配 表符号
+### 多码位表情包
+
+php的不同点 u模式： 
+https://www.php.net/manual/zh/reference.pcre.pattern.modifiers.php
+http://www.shtml.net/article/content/tok/27347/id/253823.shtml
+https://www.5axxw.com/questions/content/4cle8y
+https://blog.csdn.net/qq_36380426/article/details/108016275
 
 /[\x{10000}-\x{10FFFF}\x{FFFD}\x{003F}].*/u
