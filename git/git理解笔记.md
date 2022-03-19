@@ -48,6 +48,7 @@ git branch [-a]
 查看分支 [所有,外加远程仓库]
 
 git branch -d develop
+git branch -D develop
 删除分支
 
 git branch -D feature

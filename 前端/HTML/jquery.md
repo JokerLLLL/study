@@ -225,3 +225,24 @@ js的垃圾换行：https://blog.csdn.net/weixin_41287260/article/details/841463
  
  js 写法：
  return(false);
+ 
+ ### bootstrap-switch
+ 
+ ```text
+$(".switch").bootstrapSwitch({
+               onText: "开",      // 设置ON文本
+               offText: "关",    // 设置OFF文本
+               onColor: "success",// 设置ON文本颜色(info/success/warning/danger/primary)
+               offColor: "danger",  // 设置OFF文本颜色 (info/success/warning/danger/primary)
+               size: "mini",    // 设置控件大小,从小到大  (mini/small/normal/large)
+               onSwitchChange: function (event, state) {
+                   alert(state)
+               }// 当开
+           });
+  
+ $(".switch").bootstrapSwitch('state', true) // 触发事件 
+ $(".switch").bootstrapSwitch('state', true, true) // 不触发事件
+```
+ 
+ bootstrapSwitch('state', status, true) // 而非status true为不触发事件
+  

@@ -39,3 +39,7 @@ datediff('2001-12-12','2008-11-23'); //比较天数
 
 DATE_FORMAT('2011-11-11 11:11:11','%Y-%m-%d %r')
 
+
+## rename
+
+ALTER TABLE AdvanceOrderAnalyze CHANGE diffResult diffResult JSON DEFAULT NULL COMMENT '(DC2Type:json_array)';

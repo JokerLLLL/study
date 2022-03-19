@@ -67,3 +67,8 @@ $sudo /etc/init.d/cron start
 $sudo /etc/init.d/cron stop
 
 $sudo /etc/init.d/cron restart
+
+
+##  /etc/crontab文件和crontab -e命令区别
+
+https://blog.csdn.net/zhuocr/article/details/79423928

@@ -192,6 +192,7 @@ find / -name nginx*                   #匹配所有nginx的目录以及文件
 ## vim 批量替换 
 
 https://www.cnblogs.com/beenoisy/p/4046074.html  
+:%s/pick/s/g （批量替换pick->s）
   
  #软链接
  ln -s /a  /b
