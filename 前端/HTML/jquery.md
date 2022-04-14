@@ -245,3 +245,13 @@ $(".switch").bootstrapSwitch('state', true, true) // 不触发事件
  
 bootstrapSwitch('state', status, true) // 而非status true为不触发事件
 ``` 
+
+
+## 获取form数据
+
+
+var d = {}
+var t = $('#form').serializeArray();  //t的值为[{name: "a1", value: "xx"},
+$.each(t, function () {
+   d[this.name] = this.value;
+});

@@ -43,3 +43,17 @@ DATE_FORMAT('2011-11-11 11:11:11','%Y-%m-%d %r')
 ## rename
 
 ALTER TABLE AdvanceOrderAnalyze CHANGE diffResult diffResult JSON DEFAULT NULL COMMENT '(DC2Type:json_array)';
+
+
+## mysql datetime格式_Mysql datetime格式添加10分钟
+
+INTERVAL expr unit表示法.这对我来说更具可读性：
+
+SELECT NOW();
+
+select NOW() + INTERVAL 10 MINUTE;
+
+```text
+
+select now() - INTERVAL 10 MINUTE,DATE_SUB( CURRENT_TIME(), INTERVAL 10 MINUTE),DATE_add( CURRENT_TIME(), INTERVAL 10 MINUTE),CURRENT_TIME(),CURRENT_DATE,CURRENT_TIMESTAMP(),now(),CURRENT_USER();
+```

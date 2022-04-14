@@ -68,6 +68,8 @@ $sudo /etc/init.d/cron stop
 
 $sudo /etc/init.d/cron restart
 
+service crond restart // 可能无效
+
 
 ##  /etc/crontab文件和crontab -e命令区别
 

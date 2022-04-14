@@ -502,3 +502,16 @@ SET session transaction isolation level REPEATABLE READ;
 https://www.jianshu.com/p/b9b7f2b5db24
 `ON DUPLICATE KEY UPDATE`
 https://www.cnblogs.com/innocenter/p/12869158.html
+
+## join update
+
+```text
+UPDATE QueueBetter a
+INNER JOIN Shipment b ON b.salesOrderId = a.extraInfo
+SET a.entityId = b.id,
+ a.isProcessed = 0
+WHERE
+        a.entityId = 0
+AND a.mark = 'getWaybill'
+AND a.extraInfo != '';
+```
