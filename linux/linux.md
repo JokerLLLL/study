@@ -85,6 +85,10 @@ tar -xzvf file.tar.gz              -C  /tmp/ #指定解压目录      -c打包 -
 tar -xjvf file.tar.bz2
 
 
+## 批量解压
+
+ls shipment_download_control.app15-oms-prod.log-202206* |xargs -n1 gzip -d
+
 ## gzip 命令
 
 Usage: gzip [OPTION]... [FILE]...

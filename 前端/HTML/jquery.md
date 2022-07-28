@@ -255,3 +255,7 @@ var t = $('#form').serializeArray();  //t的值为[{name: "a1", value: "xx"},
 $.each(t, function () {
    d[this.name] = this.value;
 });
+
+# jquery prop()和attr()区别
+
+https://blog.csdn.net/jrl12345/article/details/105049905

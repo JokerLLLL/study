@@ -515,3 +515,9 @@ WHERE
 AND a.mark = 'getWaybill'
 AND a.extraInfo != '';
 ```
+
+## select insert
+
+INSERT INTO `QueueBetter`(`entityId`, `mark`, `tryTimes`, `isProcessed`, `isDeleted`, `created`, `updated`, `entityName`, `errMsg`, `priority`, `subMark`, `extraInfo`) 
+select s.id as entityId,'decryptSensitiveSalesOrder' as mark,0 as tryTimes, 0 as isProcessed, 0 as isDeleted, now() as created, now() as updated,'UcoOmsBundle:SalesOrder' as entityName,'' as errMsg,
+100 as priority,'' as subMark,'' as extraInfo  from SalesOrder s WHERE s.platformId = '100551' and s.created > '2022-05-10' and s.orderType = 'NORMAL' order by s.id desc limit 100;
