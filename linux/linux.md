@@ -316,6 +316,8 @@ https://blog.csdn.net/youzhouliu/article/details/79051516
 
 sed -i "s/\r//" a.sh来转化 或 set fileformat=unix
 
+sed 用法
+https://www.jianshu.com/p/1f669d2ee8b1
 
 ## samba
 

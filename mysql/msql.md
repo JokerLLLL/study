@@ -55,6 +55,8 @@ UPDATE hy_brand set `logo` = CONCAT('http://obd-admin.com/brand_logo/',`logo_bp`
 
 ```
 
+CONCAT(null, '_99999')  === null
+
 ## 查询不是空表的表名
 
 ```sql
