@@ -58,6 +58,8 @@ alias 'start_oms'='docker start oms oms-cv3 oms-redis oms-mq' //关闭
 ### 变成ut 文件
 alias to_ut='sed -i "s/\/app\/ops/\/var\/oms/g" build/my_init.d/use_src.py && python3 build/my_init.d/use_src.py ut  && sed -i "s/\/var\/oms/\/app\/ops/g" build/my_init.d/use_src.py'
 
+alias to_ut='sed -i "s/\/app\/ops/\/var\/oms\/omsut/g" build/my_init.d/use_src.py && python3 build/my_init.d/use_src.py ut  && sed -i "s/\/var\/oms\/omsut/\/app\/ops/g" build/my_init.d/use_src.py'
+
 -- 测试 unit test
 
 -- run.sh 中 src_static_analyze 注释掉可跳过语法检查 

@@ -301,7 +301,13 @@ https://books.google.co.jp/books?id=s8PUDwAAQBAJ&pg=PT233&lpg=PT233&dq=mysql+%E4
 ### mysql 更新查询
 
 https://www.jianshu.com/p/60b3f987c477
-UPDATE PrepackPlatform Left JOIN Product ON Product.id = PrepackPlatform.productId SET isEnable = 0 WHERE  Product.productCode in ('');
+UPDATE PrepackPlatform Left 
+
+JOIN Product ON Product.id = PrepackPlatform.productId 
+
+SET isEnable = 0 
+
+WHERE  Product.productCode in ('');
 
 
 ## mysql实现乐观锁

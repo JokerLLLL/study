@@ -62,5 +62,24 @@ return $this->redirectToRoute('homepage', array(), 301);
 return $this->redirect('http://symfony.com/doc');
 
 
+## api 和 web 通知获取
+// 仅 bbp
+product_api:
+    pattern: ^/products/api
+    http_basic:
+        provider: local
+    stateless: true
 
+// bbp 和 登录都可以
+product_api:
+    pattern: ^/products/api
+    http_basic:
+        provider: local
+    context: primary_auth
+    logout_on_user_change: true
+
+// 无需登录          
+ttx_java_api:
+    pattern: ^/jwms
+    security: false
 

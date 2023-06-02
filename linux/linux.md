@@ -324,8 +324,21 @@ https://www.jianshu.com/p/1f669d2ee8b1
 https://blog.csdn.net/weixin_42350212/article/details/88804834 --安装
 http://blog.sciencenet.cn/blog-3353749-1157009.html -- 有账户
 https://zhangnq.com/2987.html -- 无账户 
+无账号命令： chown nobody:nogroup oms -R
+
 systemctl status smb
+
+or systemctl status smbd
+service smbd status
 
 -- 使用phpstorm 打开项目
 https://blog.csdn.net/fsc_fantexi/article/details/72324412 -- 将共享的目录映射成本地网络驱动器。 -- 然后可以用phpstorm 打开文件目录
 
+windows登录姓名和密码： 
+用户名需要加 \ 表示 全域用户。 2c32ZMC53Gcpto
+\\qa1.uco.com\gaokena\oms
+
+测试地址： 
+登录：\\qa1.uco.com\gaokena
+\gaokena
+2c32ZMC53Gcpto
