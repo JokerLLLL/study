@@ -43,4 +43,80 @@ GROUP BY a.id,a.rmaId,a.productId
 )m
 
 
+wangyuanyuan Candy Wang（DTC） 添加了评论 - 2天前
+表二参考SQL：
+
+with line as (select s.shipTime as date,
+s.platformId as platformid,
+s.warehouse as warehouse,
+sl.shipmentId as shipmentid,
+sl.id as shipmentlineid,
+p.productCode as product,
+p.salesType as type
+from uco.ShipmentLine sl
+left join uco.Product p on sl.productId = p.id
+left join uco.Shipment s on sl.shipmentId = s.id and s.status <> 3
+where s.shipTime >= '2023-03-01'
+and s.shipTime < '2023-03-02'
+and sl.isDeleted = 0),
+spid as (select line.date as date,
+line.platformid as platformid,
+line.warehouse as warehouse,
+line.shipmentid as shipmentid,
+– first_value(line.type) over (partition by line.shipmentId order by if(isnull(line.Type), 1, 0), line.type ) as rn – p.materialtype
+min(line.type) as rn
+from line
+group by date, platformid, warehouse, shipmentid),
+tmp as (select date(spid.date) as date,
+spid.platformid as platformid,
+spid.warehouse as warehouse,
+spid.shipmentid as shipmentid,
+case
+when spid.rn = 10 then '正装订单'
+when spid.rn = 20 or spid.rn = 30 then '非正装订单'
+else '其他订单'
+end as ordertype
+from spid)
+select date(tmp.date) as date,
+tmp.platformid as platformid,
+tmp.warehouse as warehouse,
+tmp.ordertype,
+count(distinct tmp.shipmentid) as quantity
+from tmp
+group by date, platformid, warehouse, ordertype
+
+
+
+wangyuanyuan
+Candy Wang（DTC） 添加了评论 - 3天前 - 已编辑
+表一参考sql：是否需要so跟 oma full join 待数据开发跟接口开发做方案设计的时候考虑
+– so
+with detail as(select s.warehouse as warehouse,
+s.platformId as platformId,
+s.shipTime as date,
+p.productCode as product,
+sl.quantity as quantity
+from uco.ShipmentLine sl
+left join uco.Product p on sl.productId=p.id
+left join uco.Shipment s on sl.shipmentId=s.id and s.status =1
+where s.shipTime>='2023-03-01'
+and s.shipTime <'2023-03-02'
+and sl.isDeleted = 0)
+select date(date) ,warehouse, platformId, product, sum(quantity)
+from detail
+group by warehouse, platformId, product;;
+– oma
+with detail as (select s.shipTime as date,
+p.realContainer as product,
+s.id as id,
+s.warehouse as warehouse,
+s.platformId as platformId
+from uco.Package p
+left join uco.Shipment s on p.shipmentid = s.id and s.status =1
+where s.shipTime >= '2023-03-01'
+and s.shipTime < '2023-03-02'
+and p.isDeleted= 0)
+select DATE(date),warehouse,platformId,product, count(product)
+from detail
+group by DATE(date), warehouse,platformId,product;
 
