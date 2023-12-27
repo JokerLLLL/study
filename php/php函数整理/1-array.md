@@ -121,6 +121,31 @@
 
 `array_intersect_key` 返回健名的交际、
 
+ChatGPT用法:
+在使用 `array_intersect_key()` 函数比较多个数组的键时，它将返回包含所有输入数组中已存在于所有输入数组中的键和对应的值的新数组。如果两个或多个数组具有相同的键，则该键的值将取决于该键在哪个数组中出现。
+
+当相同键出现在多个数组中时，`array_intersect_key()` 函数将返回第一个数组中该键的值。这意味着，如果您希望保留后面的数组中该键的值，请将该数组作为第一个参数传递给该函数。
+
+以下是一个示例：
+```
+$array1 = array('a' => 1, 'b' => 2, 'c' => 3);
+$array2 = array('d' => 4, 'e' => 5, 'a' => 10);
+$array3 = array('f' => 6, 'g' => 7, 'a' => 100);
+
+// 保留后面的数组中该键的值
+$result = array_intersect_key($array1, $array2, $array3);
+print_r($result); // 输出： Array ( [a] => 10 )
+
+// 保留前面的数组中该键的值
+$result = array_intersect_key($array3, $array2, $array1);
+print_r($result); // 输出： Array ( [a] => 100 )
+```
+
+在第一个示例中，由于 `$array2` 中的 `"a"` 键位于 `$array1` 中的 `"a"` 键之后，所以返回的结果数组中的 `"a"` 键的值等于 `$array2` 中的值 `"10"`。
+
+在第二个示例中，由于 `$array3` 中的 `"a"` 键位于 `$array2` 和 `$array1` 中的 `"a"` 键之后，所以返回的结果数组中的 `"a"` 键的值等于 `$array3` 中的值 `"100"`。
+
+
 # 其他数组函数 #
 
 `array_unique($arr);` 移除数组中重复的值，新的数组中会保留原始的键名

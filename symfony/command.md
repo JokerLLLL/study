@@ -125,3 +125,11 @@ http://www.symfonychina.com/doc/current/console.html
 for (( i=0 ;i<=10000 ;i++));do /usr/bin/php /app/ops/app/console ops:create_salesorder_for_download 720 100202 'GIV70103,10;GIV70102,5' 50 ;done
 
 
+
+##  counter查询
+
+counter_go:select --keys=% --useLike=1 | grep '仓编码|producId'
+counter_go:select --keys='PROMOTIONACTIONLINE|202815|usableQuantity’获取可使用数量
+counter_go:select --keys='PROMOTIONACTIONLINE|202815|usedQuantity’ 可用获取已使用数量
+--202815是promotionActionLine的id
+
